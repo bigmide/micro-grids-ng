@@ -1,4 +1,4 @@
-import { HomeView } from '@/pages/home'
+import { AboutView } from '@/pages/about'
 
 // ----------------------------------------------------------------------
 
@@ -10,5 +10,5 @@ export function meta() {
 }
 
 export default function Home() {
-  return <HomeView />
+  return <AboutView />
 }
