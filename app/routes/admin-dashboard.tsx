@@ -1,6 +1,6 @@
 // ----------------------------------------------------------------------
 
-import { HomeView } from '@/pages/home'
+import { AdminDashboardView } from '@/pages/admin-dashboard'
 
 export function meta() {
   return [
@@ -10,5 +10,5 @@ export function meta() {
 }
 
 export default function Home() {
-  return <HomeView />
+  return <AdminDashboardView />
 }

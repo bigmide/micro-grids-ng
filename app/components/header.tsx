@@ -10,7 +10,7 @@ import {
   PopoverPanel,
 } from '@headlessui/react'
 import { clsx } from 'clsx'
-import avatarImage from '@/images/portrait.jpeg'
+import logoImage from '@/images/logo.png'
 import { Link, useLocation, useFetcher } from 'react-router'
 import { Container } from './container'
 import { useTheme } from '@/context/theme-context'
@@ -194,7 +194,7 @@ export function Header() {
                   </AvatarContainer>
                 )}
               </div>
-              <div className="flex flex-1 justify-end md:justify-center">
+              <div className="flex justify-end md:justify-center">
                 <MobileNavigation className="pointer-events-auto md:hidden" />
                 <DesktopNavigation className="pointer-events-auto hidden md:block" />
               </div>
@@ -333,11 +333,14 @@ function MobileNavigation(
         </div>
         <nav className="mt-6">
           <ul className="-my-2 divide-y divide-zinc-100 text-base text-zinc-800 dark:divide-zinc-100/5 dark:text-zinc-300">
-            <MobileNavItem href="/about">About</MobileNavItem>
-            <MobileNavItem href="/articles">Articles</MobileNavItem>
-            <MobileNavItem href="/projects">Projects</MobileNavItem>
-            <MobileNavItem href="/speaking">Speaking</MobileNavItem>
-            <MobileNavItem href="/uses">Uses</MobileNavItem>
+            <MobileNavItem href="map-explorer">Map explorer</MobileNavItem>
+            <MobileNavItem href="submit-microgrid">
+              Submit microgrid
+            </MobileNavItem>
+            <MobileNavItem href="solar-providers">
+              Solar Suppliers
+            </MobileNavItem>
+            <MobileNavItem href="about">About</MobileNavItem>
           </ul>
         </nav>
       </PopoverPanel>
@@ -382,11 +385,10 @@ function DesktopNavigation(props: React.ComponentPropsWithoutRef<'nav'>) {
   return (
     <nav {...props}>
       <ul className="flex rounded-full bg-white/90 px-3 text-sm font-medium text-zinc-800 shadow-lg ring-1 shadow-zinc-800/5 ring-zinc-900/5 backdrop-blur-sm dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10">
-        <NavItem href="/about">About</NavItem>
-        <NavItem href="/articles">Articles</NavItem>
-        <NavItem href="/projects">Projects</NavItem>
-        <NavItem href="/speaking">Speaking</NavItem>
-        <NavItem href="/uses">Uses</NavItem>
+        <NavItem href="map-explorer">Map explorer</NavItem>
+        <NavItem href="submit-microgrid">Submit microgrid</NavItem>
+        <NavItem href="solar-providers">Solar Suppliers</NavItem>
+        <NavItem href="about">About</NavItem>
       </ul>
     </nav>
   )
@@ -449,7 +451,7 @@ function Avatar({
       {...props}
     >
       <img
-        src={avatarImage}
+        src={logoImage}
         alt=""
         sizes={large ? '4rem' : '2.25rem'}
         className={clsx(

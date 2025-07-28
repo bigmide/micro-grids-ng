@@ -1,10 +1,13 @@
+/*global React */
+
 'use client'
 
-import React, { createContext, useContext, useEffect } from 'react'
+import { createContext, useContext, useEffect } from 'react'
 
 // ----------------------------------------------------------------------
 
 export type Theme = 'light' | 'dark'
+
 type ThemeContextType = {
   theme: Theme
 }
@@ -19,12 +22,12 @@ export const ThemeProvider = ({
   children: React.ReactNode
 }) => {
   useEffect(() => {
-    document.documentElement.classList.toggle(
-      'dark',
+    const isDark =
       specifiedTheme === 'dark' ||
-        (!specifiedTheme &&
-          window.matchMedia('(prefers-color-scheme: dark)').matches),
-    )
+      (!specifiedTheme &&
+        window.matchMedia('(prefers-color-scheme: dark)').matches)
+
+    document.documentElement.classList.toggle('dark', isDark)
   }, [specifiedTheme])
 
   return (

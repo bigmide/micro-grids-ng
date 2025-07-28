@@ -32,4 +32,46 @@
   --text-8xl--line-height: 1;
   --text-9xl: 8rem;
   --text-9xl--line-height: 1;
+
+  --animate-side-nav-entry: expandable-side-nav-entry-animation 0.4s
+    cubic-bezier(0.215, 0.61, 0.355, 1);
+
+  @keyframes expandable-side-nav-entry-animation {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0px);
+    }
+  }
+}
+
+@layer components {
+  .leaflet-popup .leaflet-popup-content-wrapper {
+    @apply bg-white text-zinc-900;
+    border-radius: 5px;
+    padding-right: 0.6rem;
+  }
+
+  .leaflet-popup .leaflet-popup-content {
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .leaflet-popup .leaflet-popup-content span:first-child {
+    font-size: 2.5rem;
+    line-height: 1;
+  }
+
+  .leaflet-popup .leaflet-popup-tip {
+    @apply bg-white;
+  }
+
+  .leaflet-popup-content-wrapper {
+    border-left: 5px solid var(--color-teal-500);
+  }
 }

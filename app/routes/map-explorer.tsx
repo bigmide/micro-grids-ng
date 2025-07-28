@@ -1,6 +1,7 @@
-import { MappingMicroGrids } from '@/pages/mapping-micro-grid'
-
 // ----------------------------------------------------------------------
+
+import { ClientOnly } from '@/components/client-only'
+import { MapExplorerView } from '@/pages/map-explorer'
 
 export function meta() {
   return [
@@ -13,5 +14,9 @@ export function meta() {
 }
 
 export default function MicroGrids() {
-  return <MappingMicroGrids />
+  return (
+    <ClientOnly>
+      <MapExplorerView />
+    </ClientOnly>
+  )
 }

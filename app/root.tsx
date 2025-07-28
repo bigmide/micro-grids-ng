@@ -1,3 +1,4 @@
+/*global React*/
 import {
   data,
   isRouteErrorResponse,
@@ -17,7 +18,7 @@ import { themeCookie } from '@/utils/theme.server'
 export async function loader({ request }: Route.LoaderArgs) {
   const cookieHeader = request.headers.get('Cookie')
   const cookie = (await themeCookie.parse(cookieHeader)) || {}
-  return data({ theme: cookie.theme ?? '' })
+  return data({ theme: cookie.theme ?? 'light' })
 }
 
 export async function action({ request }: Route.ActionArgs) {
@@ -25,16 +26,9 @@ export async function action({ request }: Route.ActionArgs) {
   const cookie = (await themeCookie.parse(cookieHeader)) || {}
   const formData = await request.formData()
   const theme = formData.get('theme') as string
-  if (theme === 'system') {
-    return data({
-      headers: {
-        'Set-Cookie': await themeCookie.serialize('', {
-          expires: new Date(0),
-        }),
-      },
-    })
-  }
+
   cookie.theme = theme
+
   return data(theme, {
     headers: {
       'Set-Cookie': await themeCookie.serialize(cookie),
@@ -52,6 +46,10 @@ export const links: Route.LinksFunction = () => [
   {
     rel: 'stylesheet',
     href: 'https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap',
+  },
+  {
+    rel: 'stylesheet',
+    href: 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css',
   },
 ]
 
