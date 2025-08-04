@@ -1,7 +1,6 @@
-import { Card } from '@/components/card'
-import { SimpleLayout } from '@/components/simple-layout'
-import { formatDate } from '@/lib/formatDate'
-import type { PostFrontmatterWithSlug } from '@/lib/posts/types'
+import { Post } from '@/features/blog/components/post'
+import type { PostFrontmatterWithSlug } from '@/features/blog/types/post.types'
+import { SimpleLayout } from '@/layouts/simple-layout'
 
 // ----------------------------------------------------------------------
 
@@ -19,34 +18,5 @@ export function BlogView({ posts }: { posts: PostFrontmatterWithSlug[] }) {
         </div>
       </div>
     </SimpleLayout>
-  )
-}
-
-// ----------------------------------------------------------------------
-
-function Post({ post }: { post: PostFrontmatterWithSlug }) {
-  return (
-    <article className="md:grid md:grid-cols-4 md:items-baseline">
-      <Card className="md:col-span-3">
-        <Card.Title href={`/blog/${post.slug}`}>{post.title}</Card.Title>
-        <Card.Eyebrow
-          as="time"
-          dateTime={post.published}
-          className="md:hidden"
-          decorate
-        >
-          {formatDate(post.published)}
-        </Card.Eyebrow>
-        <Card.Description>{post.description}</Card.Description>
-        <Card.Cta>Read post</Card.Cta>
-      </Card>
-      <Card.Eyebrow
-        as="time"
-        dateTime={post.published}
-        className="mt-1 max-md:hidden"
-      >
-        {formatDate(post.published)}
-      </Card.Eyebrow>
-    </article>
   )
 }

@@ -1,5 +1,5 @@
 import { Container } from '@/components/container'
-import { Prose } from '@/components/Prose'
+import { Prose } from '@/features/blog/components/prose'
 import { Link } from 'react-router'
 import image1 from '@/images/photos/image-1.jpg'
 import image2 from '@/images/photos/image-2.jpg'

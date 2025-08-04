@@ -287,3 +287,71 @@ export const microgridServiceProviders: MicrogridServiceProviders = [
     ],
   },
 ]
+
+export interface MicrogridServiceProvider {
+  category: string
+  name: string
+  productsAndServices: [
+    'Solar Panels',
+    'Batteries',
+    'Inverters',
+    'UPS',
+    'Microgrid Advisor',
+    'Edge control Systems',
+    'Design & Development',
+    'Installation & Maintenance',
+    'Generation & Distribution',
+    'Monitoring & Control',
+    'Automation',
+    'Remote monitoring',
+    'Grid softwares',
+    'Fuel-cells',
+    'Asset management',
+    'wind',
+  ]
+  connectionMode: ['Remote (off-grid)', 'Grid-connected', 'Networked']
+  businessClassification: [
+    'wholesaler',
+    'retailer',
+    'manufacturer',
+    'Small scale',
+    'Medium scale',
+    'Large scale',
+  ]
+  description: string
+  commencementYear: string
+  certification: string
+  contactName: string
+  phone: string
+  email: string
+  website: string
+  address: string
+  state: string
+  lga: string
+  city: string
+  coverageArea: string
+  position: { lat: string; lng: string }
+  logo: string
+  notes: string
+}
+
+export interface Microgrid {
+  category: string
+  name: string
+  operator: string
+  type: string
+  capacity: string
+  powerSources: string
+  description: string
+  commissioningDate: string
+  state: string
+  lga: string
+  city: string
+  geopoliticalZone: string
+  size: string
+  position: { lat: string; lng: string }
+  source: string
+  contactName: string
+  email: string
+  notes: string
+}

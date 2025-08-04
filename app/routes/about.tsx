@@ -4,8 +4,12 @@ import { AboutView } from '@/pages/about'
 
 export function meta() {
   return [
-    { title: 'Micro-Grids NG' },
-    { name: 'description', content: 'Welcome to Micro-grid NG!' },
+    { title: 'About | Microgrids NG' },
+    {
+      name: 'description',
+      content:
+        'Learn about Micro-Grids NG — our mission, vision, and commitment to advancing sustainable and decentralized energy systems across Nigeria.',
+    },
   ]
 }
 

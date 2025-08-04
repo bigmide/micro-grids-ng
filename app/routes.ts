@@ -6,23 +6,35 @@ import {
 } from '@react-router/dev/routes'
 
 export default [
-  layout('./components/layout.tsx', [
+  layout('./layouts/layout.tsx', [
     index('routes/home.tsx'),
+
     route('author', 'routes/author.tsx'),
+
     route('about', 'routes/about.tsx'),
-    route('blog', 'routes/blog.tsx'),
+
+    route('blog', 'routes/blog/blog.tsx'),
+
     route('submit-microgrid', 'routes/submit-microgrid.tsx'),
-    route('submit-microgrid2', 'routes/submit-microgrid-copy.tsx'),
+
     route('solar-providers', 'routes/solar-providers.tsx'),
-    route('solar-providers2', 'routes/solar-providers-copy.tsx'),
+
     route('dashboard', 'routes/admin-dashboard.tsx'),
+
     route(
       'blog/powering-nigeria-one-community-at-a-time',
-      './routes/blogs/powering-nigeria-one-community-at-a-time.mdx',
+      './routes/blog/posts/powering-nigeria-one-community-at-a-time.mdx',
     ),
-    route('map-explorer', 'routes/map-explorer.tsx', [
-      index('./components/microgrid-nav.tsx'),
-      route(':name', './components/microgrid-details.tsx'),
+
+    route('map-explorer', 'routes/map-explorer/map-explorer.tsx', [
+      index('./routes/map-explorer/map-nav.tsx'),
+      route(':name', 'routes/map-explorer/map-details.tsx'),
     ]),
+
+    route('*', 'routes/not-found.tsx'),
+  ]),
+
+  layout('./layouts/auth-layout.tsx', [
+    route('login', 'routes/auth/login.tsx'),
   ]),
 ] satisfies RouteConfig

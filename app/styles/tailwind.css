@@ -74,4 +74,8 @@
   .leaflet-popup-content-wrapper {
     border-left: 5px solid var(--color-teal-500);
   }
+
+  .hue-rotated-green .leaflet-marker-icon {
+    filter: hue-rotate(120deg); /* Adjust hue as needed */
+  }
 }

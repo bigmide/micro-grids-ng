@@ -4,11 +4,11 @@ import { AuthorView } from '@/pages/author'
 
 export function meta() {
   return [
-    { title: 'Author' },
+    { title: 'Ekanem Bassey | Energy Law & Policy Expert' },
     {
       name: 'description',
       content:
-        'I’m Ekanem Bassey, shaping the future of energy and law—power, gas, clean fuels, policy, and regulatory strategy across the oil & gas sector.',
+        'Discover the thought leadership of Ekanem Bassey in energy law, gas and power regulation, clean fuels policy, and strategic insights for the oil & gas industry.',
     },
   ]
 }

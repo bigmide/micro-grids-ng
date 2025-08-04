@@ -18,9 +18,11 @@ export const Select = forwardRef(function Select(
         // Basic layout
         'group relative block w-full',
         // Background color + shadow applied to inset pseudo element, so shadow blends with border in light mode
-        'rounded-[calc(var(--radius-md)-1px)] bg-white shadow-md shadow-zinc-800/5 dark:bg-zinc-700/[0.15]',
+        'before:absolute before:inset-px before:rounded-[calc(var(--radius-lg)-1px)] before:bg-white before:shadow-sm',
+        // Background color is moved to control and shadow is removed in dark mode so hide `before` pseudo
+        'dark:before:hidden',
         // Focus ring
-        'outline outline-zinc-900/10 has-data-focus:ring-4 has-data-focus:ring-teal-500/10 has-data-focus:outline-teal-500 dark:outline-zinc-700 dark:has-data-focus:ring-teal-400/10 dark:has-data-focus:outline-teal-400',
+        'after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:ring-transparent after:ring-inset has-data-focus:after:ring-2 has-data-focus:after:ring-teal-500',
         // Disabled state
         'has-data-disabled:opacity-50 has-data-disabled:before:bg-zinc-950/5 has-data-disabled:before:shadow-none',
       ])}
@@ -31,7 +33,7 @@ export const Select = forwardRef(function Select(
         {...props}
         className={clsx([
           // Basic layout
-          'relative block w-full appearance-none rounded-lg py-[calc(--spacing(2.5)-1px)] sm:py-[calc(--spacing(2)-1px)]',
+          'relative block w-full appearance-none rounded-lg py-[calc(--spacing(2.5)-1px)] sm:py-[calc(--spacing(1.5)-1px)]',
           // Horizontal padding
           multiple
             ? 'px-[calc(--spacing(3.5)-1px)] sm:px-[calc(--spacing(3)-1px)]'
@@ -40,6 +42,8 @@ export const Select = forwardRef(function Select(
           '[&_optgroup]:font-semibold',
           // Typography
           'text-base/6 text-zinc-950 placeholder:text-zinc-500 sm:text-sm/6 dark:text-white dark:*:text-white',
+          // Border
+          'border border-zinc-950/10 data-hover:border-zinc-950/20 dark:border-white/10 dark:data-hover:border-white/20',
           // Background color
           'bg-transparent dark:bg-white/5 dark:*:bg-zinc-800',
           // Hide default focus styles

@@ -12,6 +12,7 @@ import {
 import './styles/tailwind.css'
 import type { Route } from './+types/root'
 import { Providers } from './context/providers'
+import { Toaster } from 'sonner'
 
 import { themeCookie } from '@/utils/theme.server'
 
@@ -62,7 +63,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body className="flex h-full bg-zinc-50 dark:bg-black">
+      <body className="h-full bg-zinc-50 dark:bg-black">
         {children}
         <ScrollRestoration />
         <Scripts />
@@ -75,11 +76,12 @@ export default function App({ loaderData }: Route.ComponentProps) {
   const { theme } = loaderData
 
   return (
-    <Providers theme={theme}>
-      <div className="flex w-full">
+    <>
+      <Providers theme={theme}>
         <Outlet />
-      </div>
-    </Providers>
+      </Providers>
+      <Toaster />
+    </>
   )
 }
 

@@ -1,8 +1,6 @@
-'use client'
-import type React from 'react'
 import * as Headless from '@headlessui/react'
 import { clsx } from 'clsx'
-import { Fragment } from 'react'
+import React, { Fragment } from 'react'
 
 export function Listbox<T>({
   className,
@@ -30,9 +28,13 @@ export function Listbox<T>({
           // Basic layout
           'group relative block w-full',
           // Background color + shadow applied to inset pseudo element, so shadow blends with border in light mode
-          'rounded-[calc(var(--radius-md)-1px)] bg-white shadow-md shadow-zinc-800/5 dark:bg-zinc-700/[0.15]',
+          'before:absolute before:inset-px before:rounded-[calc(var(--radius-lg)-1px)] before:bg-white before:shadow-sm',
+          // Background color is moved to control and shadow is removed in dark mode so hide `before` pseudo
+          'dark:before:hidden',
+          // Hide default focus styles
+          'focus:outline-hidden',
           // Focus ring
-          'outline outline-zinc-900/10 focus:ring-4 focus:ring-teal-500/10 focus:outline-teal-500 dark:outline-zinc-700 dark:focus:ring-teal-400/10 dark:focus:outline-teal-400',
+          'after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:ring-transparent after:ring-inset data-focus:after:ring-2 data-focus:after:ring-teal-500',
           // Disabled state
           'data-disabled:opacity-50 data-disabled:before:bg-zinc-950/5 data-disabled:before:shadow-none',
         ])}
@@ -49,13 +51,15 @@ export function Listbox<T>({
           }
           className={clsx([
             // Basic layout
-            'relative block w-full appearance-none rounded-md py-[calc(--spacing(2.5)-1px)] sm:py-[calc(--spacing(2)-1px)]',
+            'relative block w-full appearance-none rounded-lg py-[calc(--spacing(2.5)-1px)] sm:py-[calc(--spacing(1.5)-1px)]',
             // Set minimum height for when no value is selected
             'min-h-11 sm:min-h-9',
             // Horizontal padding
             'pr-[calc(--spacing(7)-1px)] pl-[calc(--spacing(3.5)-1px)] sm:pl-[calc(--spacing(3)-1px)]',
             // Typography
             'text-left text-base/6 text-zinc-950 placeholder:text-zinc-500 sm:text-sm/6 dark:text-white forced-colors:text-[CanvasText]',
+            // Border
+            'border border-zinc-950/10 group-data-active:border-zinc-950/20 group-data-hover:border-zinc-950/20 dark:border-white/10 dark:group-data-active:border-white/20 dark:group-data-hover:border-white/20',
             // Background color
             'bg-transparent dark:bg-white/5',
             // Invalid state
@@ -148,7 +152,7 @@ export function ListboxOption<T>({
               // Typography
               'text-base/6 text-zinc-950 sm:text-sm/6 dark:text-white forced-colors:text-[CanvasText]',
               // Focus
-              'outline-hidden data-focus:bg-teal-500 data-focus:text-white dark:data-focus:bg-teal-400',
+              'outline-hidden data-focus:bg-teal-500 data-focus:text-white',
               // Forced colors mode
               'forced-color-adjust-none forced-colors:data-focus:bg-[Highlight] forced-colors:data-focus:text-[HighlightText]',
               // Disabled

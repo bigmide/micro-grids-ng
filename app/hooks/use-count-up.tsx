@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect, type RefObject, useCallback } from 'react'
 
+// ----------------------------------------------------------------------
 interface UseCountUpProps {
   value: number
   start?: number
@@ -20,7 +21,7 @@ interface UseCountUpReturn {
   startAnimation: () => void
 }
 
-const useCountUp = ({
+export const useCountUp = ({
   value,
   start = 0,
   duration = 3000,
@@ -185,5 +186,3 @@ const useCountUp = ({
     startAnimation,
   }
 }
-
-export default useCountUp
