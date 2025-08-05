@@ -44,12 +44,12 @@ export function BasicInfoFormSection({
           <Label>Microgrid Name</Label>
           <Input
             type="text"
-            name="name"
+            name="microgridName"
             placeholder="e.g., Ikot Solar Mini-grid"
-            invalid={!!errors?.validation?.name}
+            invalid={!!errors?.validation?.microgridName}
           />
-          {errors?.validation?.name && (
-            <ErrorMessage>{errors.validation.name}</ErrorMessage>
+          {errors?.validation?.microgridName && (
+            <ErrorMessage>{errors.validation.microgridName}</ErrorMessage>
           )}
         </Field>
 

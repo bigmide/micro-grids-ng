@@ -3,7 +3,7 @@ import {
   getGeopoliticalZoneByState,
   getLgaByState,
   nigerianStates,
-} from '@/assets/microgrids-form-data'
+} from '@/assets/nigeriaGeospatialData'
 import { Combobox, ComboboxLabel, ComboboxOption } from '@/components/combobox'
 import {
   ErrorMessage,

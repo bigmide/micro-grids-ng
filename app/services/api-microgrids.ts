@@ -20,7 +20,7 @@ export async function getMicrogrids(request: Request) {
   return { data, headers }
 }
 
-export async function submitMicrogridApplication({
+export async function submitMicrogridSubmissions({
   formData,
   request,
 }: {
@@ -37,7 +37,7 @@ export async function submitMicrogridApplication({
     const validatedData = MicrogridSchema.parse(formData)
 
     const { error } = await supabase
-      .from('microgrid_applications')
+      .from('microgrid_submissions')
       .insert([validatedData])
 
     if (error) {

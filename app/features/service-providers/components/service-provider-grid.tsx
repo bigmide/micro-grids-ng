@@ -1,5 +1,5 @@
 import type { MicrogridServiceProvidersInfo } from '@/assets/grid-data'
-import { SolarProviderCard } from './solar-provider-card'
+import { ServiceProviderCard } from './service-provider-card'
 
 // ----------------------------------------------------------------------
 
@@ -41,7 +41,7 @@ export function SolarProviderGrid({
       ) : (
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {filteredSuppliers.map((supplier, index) => (
-            <SolarProviderCard key={index} supplier={supplier} />
+            <ServiceProviderCard key={index} supplier={supplier} />
           ))}
         </div>
       )}

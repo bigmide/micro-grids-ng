@@ -17,7 +17,7 @@ export default [
 
     route('submit-microgrid', 'routes/submit-microgrid.tsx'),
 
-    route('solar-providers', 'routes/solar-providers.tsx'),
+    route('service-providers', 'routes/service-providers.tsx'),
 
     route('dashboard', 'routes/admin-dashboard.tsx'),
 

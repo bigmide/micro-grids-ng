@@ -9,11 +9,11 @@ export type Database = MergeDeep<
   {
     public: {
       Tables: {
-        microgrid_applications: {
+        microgrid_submissions: {
           Row: {
+            area: string
             capacity: string
             category: string
-            area: string
             commissioningDate: string
             contactName: string
             createdAt?: string
@@ -22,7 +22,7 @@ export type Database = MergeDeep<
             geopoliticalZone: string
             id?: number
             lga: string
-            name: string
+            microgridName: string
             notes: string | null
             operator: string
             position: PositionType
@@ -33,18 +33,18 @@ export type Database = MergeDeep<
             type: string
           }
           Insert: {
+            area: string
             capacity: string
             category: string
-            area: string
             commissioningDate: string
-            contactName?: string
+            contactName: string
             createdAt?: string
             description: string
-            email?: string
+            email: string
             geopoliticalZone: string
             id?: number
             lga: string
-            name: string
+            microgridName: string
             notes?: string | null
             operator: string
             position: PositionType
@@ -55,9 +55,9 @@ export type Database = MergeDeep<
             type: string
           }
           Update: {
+            area?: string
             capacity?: string
             category?: string
-            area?: string
             commissioningDate?: string
             contactName?: string
             createdAt?: string
@@ -66,7 +66,7 @@ export type Database = MergeDeep<
             geopoliticalZone?: string
             id?: number
             lga?: string
-            name?: string
+            microgridName?: string
             notes?: string | null
             operator?: string
             position?: PositionType
@@ -80,9 +80,9 @@ export type Database = MergeDeep<
         }
         microgrids: {
           Row: {
+            area: string
             capacity: string
             category: string
-            area: string
             commissioningDate: string
             contactName: string
             createdAt?: string
@@ -91,7 +91,7 @@ export type Database = MergeDeep<
             geopoliticalZone: string
             id?: number
             lga: string
-            name: string
+            microgridName: string
             notes: string | null
             operator: string
             position: PositionType
@@ -102,18 +102,18 @@ export type Database = MergeDeep<
             type: string
           }
           Insert: {
+            area: string
             capacity: string
             category: string
-            area: string
             commissioningDate: string
-            contactName?: string
+            contactName: string
             createdAt?: string
             description: string
-            email?: string
+            email: string
             geopoliticalZone: string
             id?: number
             lga: string
-            name: string
+            microgridName: string
             notes?: string | null
             operator: string
             position: PositionType
@@ -124,9 +124,9 @@ export type Database = MergeDeep<
             type: string
           }
           Update: {
+            area?: string
             capacity?: string
             category?: string
-            area?: string
             commissioningDate?: string
             contactName?: string
             createdAt?: string
@@ -135,7 +135,7 @@ export type Database = MergeDeep<
             geopoliticalZone?: string
             id?: number
             lga?: string
-            name?: string
+            microgridName?: string
             notes?: string | null
             operator?: string
             position?: PositionType
@@ -150,73 +150,148 @@ export type Database = MergeDeep<
         service_providers: {
           Row: {
             address: string
-            business_classification: string
+            businessClassification: string
             category: string
             certification: string
-            area: string
-            commencement_year: string
-            connection_mode: string
+            city: string
+            commencementYear: string
+            companyName: string
+            connectionMode: string
             contactName: string
-            coverage_areas: string
+            coverageAreas: string
             createdAt?: string
             description: string
             email: string
             id?: number
             lga: string
             logo: string | null
-            name: string
             notes: string | null
             phone: string
             position: PositionType
-            products_and_services: string
+            productsAndServices: string
             state: string
             website: string
           }
           Insert: {
             address: string
-            business_classification?: string
+            businessClassification: string
             category: string
-            certification?: string
-            area: string
-            commencement_year: string
-            connection_mode?: string
+            certification: string
+            city: string
+            commencementYear: string
+            companyName: string
+            connectionMode: string
             contactName: string
-            coverage_areas: string
+            coverageAreas: string
             createdAt?: string
             description: string
             email: string
             id?: number
             lga: string
             logo?: string | null
-            name: string
             notes?: string | null
             phone: string
             position: PositionType
-            products_and_services?: string
+            productsAndServices: string
             state: string
-            website?: string
+            website: string
           }
           Update: {
             address?: string
-            business_classification?: string
+            businessClassification?: string
             category?: string
             certification?: string
-            area?: string
-            commencement_year?: string
-            connection_mode?: string
+            city?: string
+            commencementYear?: string
+            companyName?: string
+            connectionMode?: string
             contactName?: string
-            coverage_areas?: string
+            coverageAreas?: string
             createdAt?: string
             description?: string
             email?: string
             id?: number
             lga?: string
             logo?: string | null
-            name?: string
             notes?: string | null
             phone?: string
             position?: PositionType
-            products_and_services?: string
+            productsAndServices?: string
+            state?: string
+            website?: string
+          }
+          Relationships: []
+        }
+        service_providers_applications: {
+          Row: {
+            address: string
+            businessClassification: string
+            category: string
+            certification: string
+            city: string
+            commencementYear: string
+            companyName: string
+            connectionMode: string
+            contactName: string
+            coverageAreas: string
+            createdAt?: string
+            description: string
+            email: string
+            id?: number
+            lga: string
+            logo: string | null
+            notes: string | null
+            phone: string
+            position: PositionType
+            productsAndServices: string
+            state: string
+            website: string
+          }
+          Insert: {
+            address: string
+            businessClassification: string
+            category: string
+            certification: string
+            city: string
+            commencementYear: string
+            companyName: string
+            connectionMode: string
+            contactName: string
+            coverageAreas: string
+            createdAt?: string
+            description: string
+            email: string
+            id?: number
+            lga: string
+            logo?: string | null
+            notes?: string | null
+            phone: string
+            position: PositionType
+            productsAndServices: string
+            state: string
+            website: string
+          }
+          Update: {
+            address?: string
+            businessClassification?: string
+            category?: string
+            certification?: string
+            city?: string
+            commencementYear?: string
+            companyName?: string
+            connectionMode?: string
+            contactName?: string
+            coverageAreas?: string
+            createdAt?: string
+            description?: string
+            email?: string
+            id?: number
+            lga?: string
+            logo?: string | null
+            notes?: string | null
+            phone?: string
+            position?: PositionType
+            productsAndServices?: string
             state?: string
             website?: string
           }

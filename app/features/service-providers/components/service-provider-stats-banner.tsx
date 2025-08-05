@@ -2,7 +2,7 @@ import { stats } from '@/assets/microgrids-form-data'
 
 // ----------------------------------------------------------------------
 
-export function SolarProviderStatsBanner() {
+export function ServiceProviderStatsBanner() {
   return (
     <dl className="mt-16 grid grid-cols-1 gap-0.5 overflow-hidden rounded-2xl text-center sm:grid-cols-2 lg:grid-cols-4">
       {stats.map((stat) => (

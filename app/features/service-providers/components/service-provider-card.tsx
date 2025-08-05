@@ -5,7 +5,7 @@ import { Text } from '@/components/text'
 
 // ----------------------------------------------------------------------
 
-export function SolarProviderCard({ supplier }: { supplier: any }) {
+export function ServiceProviderCard({ supplier }: { supplier: any }) {
   return (
     <div className="overflow-hidden rounded-xl border border-zinc-100 shadow-md transition-shadow hover:shadow-lg dark:border-zinc-700/40">
       <div className="p-6">

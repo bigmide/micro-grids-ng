@@ -1,6 +1,6 @@
 import { SubmitMicrogridView } from '@/pages/submit-microgrid'
 import type { Route } from './+types/submit-microgrid'
-import { submitMicrogridApplication } from '@/services/api-microgrids'
+import { submitMicrogridSubmissions } from '@/services/api-microgrids'
 import type { MicrogridApplication } from '@/types/microgrids'
 import { data } from 'react-router'
 
@@ -21,7 +21,7 @@ export async function action({ request }: Route.ActionArgs) {
 
   const microgrid: MicrogridApplication = {
     category: (formData.get('category') as string) || '',
-    name: formData.get('name') as string,
+    microgridName: formData.get('name') as string,
     operator: formData.get('operator') as string,
     type: (formData.get('type') as string) || '',
     capacity: formData.get('capacity') as string,
@@ -43,7 +43,7 @@ export async function action({ request }: Route.ActionArgs) {
     notes: formData.get('notes') as string,
   }
 
-  const { ok, errors, headers } = await submitMicrogridApplication({
+  const { ok, errors, headers } = await submitMicrogridSubmissions({
     formData: microgrid,
     request,
   })

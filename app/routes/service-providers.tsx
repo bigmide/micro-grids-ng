@@ -1,4 +1,4 @@
-import SolarProvidersView from '@/pages/solar-providers'
+import ServiceProvidersView from '@/pages/service-providers'
 
 // ----------------------------------------------------------------------
 
@@ -13,5 +13,5 @@ export function meta() {
 }
 
 export default function MicroGrids() {
-  return <SolarProvidersView />
+  return <ServiceProvidersView />
 }

@@ -7,11 +7,12 @@ import { PlusIcon } from '@/components/icons/plus-icon'
 import { Input, InputGroup } from '@/components/input'
 import { Select } from '@/components/select'
 import { Text } from '@/components/text'
-import { SolarProviderGrid } from '@/features/microgrid-solar-providers/components/solar-provider-grid'
-import { HowToGetListed } from '@/features/microgrid-solar-providers/components/how-to-get-listed'
-import { SolarProviderRegistrationForm } from '@/features/microgrid-solar-providers/components/solar-provider-registration-form'
-import { SolarProviderStatsBanner } from '@/features/microgrid-solar-providers/components/solar-provider-stats-banner'
+import { SolarProviderGrid } from '@/features/service-providers/components/service-provider-grid'
+import { HowToGetListed } from '@/features/service-providers/components/how-to-get-listed'
+import { ServiceProviderApplicationForm } from '@/features/service-providers/components/service-provider-application-form'
+import { ServiceProviderStatsBanner } from '@/features/service-providers/components/service-provider-stats-banner'
 import { useState } from 'react'
+import { AnimatePresence } from 'motion/react'
 
 export default function SolarProvidersView() {
   const [showForm, setShowForm] = useState(false)
@@ -77,10 +78,12 @@ export default function SolarProvidersView() {
 
       {/* Registration Form */}
       {showForm && (
-        <SolarProviderRegistrationForm onClose={() => setShowForm(false)} />
+        <AnimatePresence>
+          <ServiceProviderApplicationForm onClose={() => setShowForm(false)} />
+        </AnimatePresence>
       )}
 
-      <SolarProviderStatsBanner />
+      <ServiceProviderStatsBanner />
 
       <SolarProviderGrid filteredSuppliers={filteredSuppliers} />
 

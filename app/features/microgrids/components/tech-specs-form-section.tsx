@@ -5,13 +5,9 @@ import {
   FieldGroup,
   Fieldset,
   Label,
-} from '../../../components/fieldset'
-import { Input } from '../../../components/input'
-import {
-  Listbox,
-  ListboxLabel,
-  ListboxOption,
-} from '../../../components/listbox'
+} from '@/components/fieldset'
+import { Input } from '@/components/input'
+import { Listbox, ListboxLabel, ListboxOption } from '@/components/listbox'
 import type { MicrogridValidationErrors } from '@/types/microgrids'
 
 export function TechSpecsFormSection({

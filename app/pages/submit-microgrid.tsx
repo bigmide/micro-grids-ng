@@ -12,7 +12,7 @@ import { SourceInfoFormSection } from '@/features/microgrids/components/source-i
 import { Form, useNavigate, useNavigation } from 'react-router'
 import { ContactInfoFormSection } from '@/features/microgrids/components/contact-info-form-section'
 import type { Route } from '../routes/+types/submit-microgrid'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { toast } from 'sonner'
 import type {
   MicrogridApplication,
@@ -22,6 +22,8 @@ import * as z from 'zod'
 import { MicrogridSchema } from '@/lib/validation/microgrid-schema'
 
 export function SubmitMicrogridView({ actionData }: Route.ComponentProps) {
+  const formRef = useRef<HTMLFormElement>(null)
+
   const navigation = useNavigation()
 
   const navigate = useNavigate()
@@ -45,12 +47,14 @@ export function SubmitMicrogridView({ actionData }: Route.ComponentProps) {
   }, [errors])
 
   useEffect(() => {
-    if (submitSuccess) {
-      toast.success(
-        ' Microgrid submitted successfully! Thank you for your contribution.',
-        { position: 'top-center' },
-      )
-    }
+    if (!submitSuccess) return
+
+    if (formRef.current) formRef.current.reset()
+
+    toast.success(
+      ' Microgrid submitted successfully! Thank you for your contribution.',
+      { position: 'top-center' },
+    )
   }, [submitSuccess])
 
   function handleChange(event: React.FormEvent<HTMLFormElement>) {
@@ -95,30 +99,6 @@ export function SubmitMicrogridView({ actionData }: Route.ComponentProps) {
     }
   }
 
-  function handleFormSubmission(event: React.FormEvent<HTMLFormElement>) {
-    const form = event.currentTarget
-    form.category.value = ''
-    form.name.value = ''
-    form.operator.value = ''
-    form.type.value = ''
-    form.capacity.value = ''
-    form.powerSources.value = ''
-    form.description.value = ''
-    form.commissioningDate.value = ''
-    form.state.value = ''
-    form.lga.value = ''
-    form.area.value = ''
-    form.geopoliticalZone.value = ''
-    form.size.value = ''
-    form.position.value = ''
-    form.lat.value = ''
-    form.lng.value = ''
-    form.source.value = ''
-    form.contactName.value = ''
-    form.email.value = ''
-    form.notes.value = ''
-  }
-
   return (
     <Container className="mt-16">
       <div className="mx-auto max-w-4xl">
@@ -131,11 +111,7 @@ export function SubmitMicrogridView({ actionData }: Route.ComponentProps) {
 
         <Divider className="my-10 mt-6" />
 
-        <Form
-          method="post"
-          onChange={handleChange}
-          onSubmit={handleFormSubmission}
-        >
+        <Form ref={formRef} method="post" onChange={handleChange}>
           <section className="grid gap-x-8 gap-y-6 sm:grid-cols-2">
             <div className="space-y-1">
               <Subheading>Basic Information</Subheading>

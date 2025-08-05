@@ -43,8 +43,8 @@ export function MobileNavigation(
             <MobileNavItem href="submit-microgrid">
               Submit microgrid
             </MobileNavItem>
-            <MobileNavItem href="solar-providers">
-              Solar Suppliers
+            <MobileNavItem href="service-providers">
+              Service providers
             </MobileNavItem>
             <MobileNavItem href="about">About</MobileNavItem>
           </ul>

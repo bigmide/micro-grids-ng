@@ -2,14 +2,14 @@ import type { Tables } from './supabase-custom'
 
 export type Microgrid = Tables<'microgrids'>
 
-export type MicrogridApplication = Tables<'microgrid_applications'>
+export type MicrogridApplication = Tables<'microgrid_submissions'>
 
 export type MicrogridValidationErrors =
   | {
       validation?:
         | {
             category?: string[]
-            name?: string[]
+            microgridName?: string[]
             description?: string[]
             type?: string[]
             operator?: string[]
