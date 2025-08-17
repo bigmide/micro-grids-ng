@@ -2,26 +2,19 @@ import { useId } from 'react'
 import { ChevronRightToCrossIcon } from '@/components/icons/chevron-right-to-cross-icon'
 import { NavLink } from 'react-router'
 import { clsx } from 'clsx'
-import type {
-  Microgrids,
-  MicrogridServiceProviders,
-} from '@/routes/map-explorer/map-nav'
+import type { Microgrid } from '@/types/microgrids'
+import type { ServiceProvider } from '@/types/service-providers'
 
 // ----------------------------------------------------------------------
 
 interface MapNavCategorySectionProps {
   category: string
-  items: (Microgrids | MicrogridServiceProviders)[]
+  items: (Microgrid | ServiceProvider)[]
   isExpanded: boolean
   onToggle: (category: string) => void
 }
 
-export function MapNavCategorySection({
-  category,
-  items,
-  isExpanded,
-  onToggle,
-}: MapNavCategorySectionProps) {
+export function MapNavCategorySection({ category, items, isExpanded, onToggle }: MapNavCategorySectionProps) {
   const contentId = useId()
 
   return (
@@ -42,8 +35,7 @@ export function MapNavCategorySection({
       >
         <ul className="mt-1 ml-4 space-y-1 border-l border-zinc-200 pl-3">
           {items.map((item) => {
-            const name =
-              'microgrid_name' in item ? item.microgrid_name : item.company_name
+            const name = 'microgridName' in item ? item.microgridName : item.companyName
 
             return (
               <li key={name}>

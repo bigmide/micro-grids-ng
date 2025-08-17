@@ -1,33 +1,30 @@
 import { useLoaderData, useNavigate, useParams } from 'react-router'
 import { Text } from '@/components/text'
-import type {
-  Microgrids,
-  MicrogridServiceProviders,
-} from '@/routes/map-explorer/map-details'
+
 import { MapDetailCard } from '../../features/map/components/map-detail-card'
 import { MapDetailItem } from '../../features/map/components/map-detail-item'
 import { MapBackButton } from '../../features/map/components/map-back-button'
 import { MapBackLink } from '../../features/map/components/map-back-link'
+import type { Microgrid } from '@/types/microgrids'
+import type { ServiceProvider } from '@/types/service-providers'
 
 export function MapDetailsView() {
   let navigate = useNavigate()
 
   const {
     microgrids,
-    microgridServiceProviders,
+    serviceProviders,
   }: {
-    microgrids: Microgrids[]
-    microgridServiceProviders: MicrogridServiceProviders[]
+    microgrids: Microgrid[]
+    serviceProviders: ServiceProvider[]
   } = useLoaderData()
 
   const { name } = useParams<{ name: string }>()
 
   // Find the microgrid in all categories
   let gridCategoryName: string = ''
-  const grid: Microgrids | undefined = microgrids.find(
-    (microgrid) =>
-      microgrid.microgrid_name.toLowerCase().replace(/-/g, ' ') ===
-      name?.toLowerCase().replace(/-/g, ' '),
+  const grid: Microgrid | undefined = microgrids.find(
+    (microgrid) => microgrid.microgridName.toLowerCase().replace(/-/g, ' ') === name?.toLowerCase().replace(/-/g, ' '),
   )
   if (grid) {
     gridCategoryName = grid.category
@@ -35,12 +32,9 @@ export function MapDetailsView() {
 
   // If not found in microgrids, check service providers
   let providerCategory: string = ''
-  const provider: MicrogridServiceProviders | undefined =
-    microgridServiceProviders.find(
-      (microgridServiceProvider) =>
-        microgridServiceProvider.company_name.toLowerCase() ===
-        name?.toLowerCase().replace(/-/g, ' '),
-    )
+  const provider: ServiceProvider | undefined = serviceProviders.find(
+    (provider) => provider.companyName.toLowerCase() === name?.toLowerCase().replace(/-/g, ' '),
+  )
   if (provider) {
     providerCategory = provider.category
   }
@@ -49,9 +43,7 @@ export function MapDetailsView() {
     return (
       <div className="p-8 text-center">
         <h1 className="mb-4 text-2xl font-bold">Grid Not Found</h1>
-        <Text className="mb-6">
-          The requested grid or provider could not be found.
-        </Text>
+        <Text className="mb-6">The requested grid or provider could not be found.</Text>
         <MapBackLink className="inline-flex items-center font-medium text-teal-500 hover:text-teal-600 dark:text-teal-400 dark:hover:text-teal-500">
           ← Back to all grids
         </MapBackLink>
@@ -69,7 +61,7 @@ export function MapDetailsView() {
             </span>
           </div>
 
-          <h1 className="mb-2 text-3xl font-bold">{grid.microgrid_name}</h1>
+          <h1 className="mb-2 text-3xl font-bold">{grid.microgridName}</h1>
 
           <Text className="mb-8">{grid.description}</Text>
 
@@ -78,32 +70,20 @@ export function MapDetailsView() {
             <MapDetailItem label="Operator" value={grid.operator} />
             <MapDetailItem label="State" value={grid.state} />
             <MapDetailItem label="LGA" value={grid.lga} />
-            <MapDetailItem
-              label="Geopolitical Zone"
-              value={grid.geopolitical_zone}
-            />
+            <MapDetailItem label="Geopolitical Zone" value={grid.geopoliticalZone} />
           </MapDetailCard>
 
           <MapDetailCard title="Technical Specifications" className="mb-8">
             <MapDetailItem label="Capacity" value={grid.capacity} />
             <MapDetailItem label="Size" value={grid.size} />
-            <MapDetailItem label="Power Sources" value={grid.power_sources} />
-            <MapDetailItem
-              label="Commissioning Date"
-              value={grid.commissioning_dates}
-            />
+            <MapDetailItem label="Power Sources" value={grid.powerSources} />
+            <MapDetailItem label="Commissioning Date" value={grid.commissioningYear} />
           </MapDetailCard>
 
           <MapDetailCard title="Location Information" className="mb-8">
             <div className="flex flex-wrap gap-4">
-              <MapDetailItem
-                label="Latitude"
-                value={String(grid.position.lat)}
-              />
-              <MapDetailItem
-                label="Longitude"
-                value={String(grid.position.lng)}
-              />
+              <MapDetailItem label="Latitude" value={String(grid.position.lat)} />
+              <MapDetailItem label="Longitude" value={String(grid.position.lng)} />
             </div>
           </MapDetailCard>
 
@@ -119,9 +99,9 @@ export function MapDetailsView() {
             </span>
           </div>
 
-          <h1 className="mb-2 text-3xl font-bold">{provider.company_name}</h1>
+          <h1 className="mb-2 text-3xl font-bold">{provider.companyName}</h1>
 
-          <Text className="mb-8">{provider.company_description}</Text>
+          <Text className="mb-8">{provider.description}</Text>
 
           <MapDetailCard title="Provider Information">
             <MapDetailItem label="Location" value={provider.state} />

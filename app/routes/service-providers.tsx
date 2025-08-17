@@ -6,6 +6,7 @@ import { submitSupabaseData } from '@/services/supabase/submit-supabase-data'
 import type { ServiceProvider } from '@/types/service-providers'
 import { ServiceProviderSchema } from '@/lib/validation/service-provider-schema'
 import { data } from 'react-router'
+import { fetchSupabaseData } from '@/services/supabase/fetch-supabase-data'
 
 // ----------------------------------------------------------------------
 
@@ -74,6 +75,32 @@ export async function action({ request }: Route.LoaderArgs) {
   if (errors) return data({ ok, errors }, { headers, status: 400 })
 
   return data({ ok, errors }, { headers, status: 200 })
+}
+
+export async function loader({ request }: Route.ActionArgs) {
+  const url = new URL(request.url)
+  const page = Number(url.searchParams.get('page')) || 1
+  const limit = 6
+  const from = (page - 1) * limit
+  const to = from + limit - 1
+
+  const {
+    data: serviceProviders,
+    error: serviceProvidersError,
+    count,
+  } = await fetchSupabaseData(request, {
+    table: 'service_providers',
+    queryOptions: { count: 'exact' },
+    query(qb) {
+      return qb.limit(limit).range(from, to)
+    },
+  })
+
+  if (serviceProvidersError || !serviceProviders) {
+    console.error(serviceProvidersError)
+    throw new Error('Microgrid could not be loaded')
+  }
+  return { serviceProviders, count }
 }
 
 export default function ServiceProviders(props: Route.ComponentProps) {

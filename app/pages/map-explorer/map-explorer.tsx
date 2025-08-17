@@ -17,17 +17,9 @@ export function MapExplorerView() {
     <Container id="map" className="mt-16">
       <Heading>Map explorer for microgrids in Nigeria</Heading>
 
-      <Text>
-        Interactive map of Nigeria with existing, developing, and potential
-        microgrids.
-      </Text>
+      <Text>Interactive map of Nigeria with existing, developing, and potential microgrids.</Text>
 
-      <Button
-        to="/submit-microgrid"
-        arrow="right"
-        className="mt-4"
-        variant="text"
-      >
+      <Button href="/submit-microgrid" arrow="right" className="mt-4" variant="text">
         Submit a microgrid
       </Button>
 
@@ -46,7 +38,7 @@ export function MapExplorerView() {
         <MapDrawer open={isSidebarVisible}>
           <Outlet />
         </MapDrawer>
-        <Map />
+        {typeof window !== 'undefined' && <Map />}
       </div>
     </Container>
   )

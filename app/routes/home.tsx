@@ -1,49 +1,43 @@
 // ----------------------------------------------------------------------
 
 import { HomeView } from '@/pages/home'
-import { createClient } from '@/services/supabase/supabase.server'
-import type { Route } from '../+types/root'
-import type { Tables } from '@/types/supabase-custom'
+import { fetchSupabaseData } from '@/services/supabase/fetch-supabase-data'
+import type { Route } from './+types/home'
 
 export function meta() {
-  return [
-    { title: 'Micro-Grids NG' },
-    { name: 'description', content: 'Welcome to Micro-grid NG!' },
-  ]
+  return [{ title: 'Micro-Grids NG' }, { name: 'description', content: 'Welcome to Micro-grid NG!' }]
 }
 
 export async function loader({ request }: Route.LoaderArgs) {
-  const { supabase } = await createClient(request)
+  const {
+    data: microgridsStates,
+    error: microgridError,
+    count,
+  } = await fetchSupabaseData(request, {
+    table: 'microgrids',
+    select: 'state',
+    queryOptions: { count: 'exact' },
+  })
 
-  const { data: microgrids, error: microgridError } = await supabase
-    .from('microgrids')
-    .select('*')
-    .overrideTypes<Tables<'microgrids'>[], { merge: false }>()
-
-  if (microgridError || !microgrids) {
+  if (microgridError || !microgridsStates) {
     console.error(microgridError)
     throw new Error('Microgrid could not be loaded')
   }
 
-  const microgridStats = [
+  const stats = [
     {
       title: 'Total microgrids mapped',
-      value: microgrids.length,
+      value: count,
     },
     {
       title: 'States covered',
-      value: new Set(microgrids.map((microgrid) => microgrid.state)).size,
+      value: new Set(microgridsStates.map(({ state }) => state)).size,
     },
   ]
 
-  return { microgridStats }
+  return { stats }
 }
 
-export interface MicrogridStats {
-  title: string
-  value: number
-}
-
-export default function Home() {
-  return <HomeView />
+export default function Home(props: Route.ComponentProps) {
+  return <HomeView {...props} />
 }

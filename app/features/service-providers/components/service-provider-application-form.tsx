@@ -146,6 +146,8 @@ export function ServiceProviderApplicationForm({
 
     if (formRef.current) formRef.current.reset()
 
+    onClose()
+
     setHasSubmitted(false)
     toast.success('Application successfully! Thank you for your contribution, we will be in touch.', {
       position: 'top-center',
@@ -201,7 +203,7 @@ export function ServiceProviderApplicationForm({
         </div>
       </div>
 
-      <Form method="post" className="p-6" encType="multipart/form-data">
+      <Form ref={formRef} method="post" className="p-6" encType="multipart/form-data">
         <Fieldset aria-label="Supplier registration form" disabled={isSubmitting}>
           <FieldGroup>
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2">

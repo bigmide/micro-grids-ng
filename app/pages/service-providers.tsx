@@ -1,4 +1,3 @@
-import { microgridServiceProviders } from '@/assets/grid-data'
 import { Button } from '@/components/button'
 import { Container } from '@/components/container'
 import { Heading } from '@/components/heading'
@@ -14,23 +13,38 @@ import { ServiceProviderStatsBanner } from '@/features/service-providers/compone
 import { useState } from 'react'
 import { AnimatePresence } from 'motion/react'
 import type { Route } from '../routes/+types/service-providers'
+import type { ServiceProvider } from '@/types/service-providers'
 
-export default function ServiceProvidersView({ actionData }: Route.ComponentProps) {
+export default function ServiceProvidersView({ actionData, loaderData }: Route.ComponentProps) {
+  const { serviceProviders, count } = loaderData
   const [showForm, setShowForm] = useState(false)
   const [searchTerm, setSearchTerm] = useState('')
-
-  // Filter solar suppliers
-  const solarSuppliers = microgridServiceProviders
-    .filter((category) => category.category === 'Solar Suppliers & Distributors')
-    .flatMap((category) => category.data)
+  const [sortBy, setSortBy] = useState('category')
 
   // Filter by search term
-  const filteredSuppliers = solarSuppliers.filter(
-    (supplier) =>
-      supplier.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      supplier.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      supplier.location.toLowerCase().includes(searchTerm.toLowerCase()),
+  const filteredServiceProviders = (serviceProviders as ServiceProvider[]).filter(
+    (provider) =>
+      provider.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      provider.companyName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      provider.state.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      JSON.parse(provider.productsAndServices as unknown as string)
+        .join(',')
+        .toLowerCase()
+        .includes(searchTerm.toLowerCase()),
   )
+
+  const sortedServiceProviders = [...filteredServiceProviders].sort((a, b) => {
+    if (sortBy === 'category') {
+      return a.category.localeCompare(b.category)
+    }
+    if (sortBy === 'companyName') {
+      return a.companyName.localeCompare(b.companyName)
+    }
+    if (sortBy === 'state') {
+      return a.state.localeCompare(b.state)
+    }
+    return 0
+  })
 
   return (
     <Container className="mt-16">
@@ -58,10 +72,10 @@ export default function ServiceProvidersView({ actionData }: Route.ComponentProp
             </div>
 
             <div>
-              <Select name="sort_by">
-                <option value="name">Sort by name</option>
-                <option value="date">Sort by date</option>
-                <option value="status">Sort by status</option>
+              <Select name="sort_by" onChange={(e) => setSortBy(e.target.value)}>
+                <option value="category">Sort by category</option>
+                <option value="companyName">Sort by name</option>
+                <option value="state">Sort by state</option>
               </Select>
             </div>
           </div>
@@ -82,7 +96,7 @@ export default function ServiceProvidersView({ actionData }: Route.ComponentProp
 
       <ServiceProviderStatsBanner />
 
-      <SolarProviderGrid filteredSuppliers={filteredSuppliers} />
+      <SolarProviderGrid filteredServiceProviders={sortedServiceProviders} count={count} />
 
       <HowToGetListed />
     </Container>

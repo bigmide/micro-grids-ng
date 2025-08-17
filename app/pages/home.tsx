@@ -3,14 +3,12 @@ import { Stats } from '@/components/stats'
 import { Hero } from '@/features/home/components/hero'
 import { Newsletter } from '@/features/home/components/newsletter'
 import { QuickLink } from '@/features/home/components/quick-link'
-import type { MicrogridStats } from '@/routes/home'
-import { useLoaderData } from 'react-router'
+import type { Route } from '../routes/+types/home'
 
 // ----------------------------------------------------------------------
 
-export function HomeView() {
-  const { microgridStats }: { microgridStats: MicrogridStats[] } =
-    useLoaderData()
+export function HomeView({ loaderData }: Route.ComponentProps) {
+  const { stats } = loaderData
 
   return (
     <>
@@ -42,8 +40,8 @@ export function HomeView() {
             <Newsletter />
 
             <div className="flex justify-between gap-1">
-              {microgridStats.map((stat) => (
-                <Stats key={stat.title} title={stat.title} value={stat.value} />
+              {stats.map((stat) => (
+                <Stats key={stat.title} title={stat.title} value={stat.value || 0} />
               ))}
             </div>
           </div>

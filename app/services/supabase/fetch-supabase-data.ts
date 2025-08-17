@@ -14,7 +14,7 @@ type Data = Microgrid[] | ServiceProvider[] | null
 type FetchOptions = {
   table: keyof Database['public']['Tables']
   select?: string
-  queryOptions?: { count: 'exact' | 'planned' | 'estimated'; head: boolean }
+  queryOptions?: { count?: 'exact' | 'planned' | 'estimated'; head?: boolean }
   query?: (qb: FetchQuery) => FetchQuery
 }
 
