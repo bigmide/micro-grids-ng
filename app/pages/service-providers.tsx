@@ -13,17 +13,15 @@ import { ServiceProviderApplicationForm } from '@/features/service-providers/com
 import { ServiceProviderStatsBanner } from '@/features/service-providers/components/service-provider-stats-banner'
 import { useState } from 'react'
 import { AnimatePresence } from 'motion/react'
+import type { Route } from '../routes/+types/service-providers'
 
-export default function SolarProvidersView() {
+export default function ServiceProvidersView({ actionData }: Route.ComponentProps) {
   const [showForm, setShowForm] = useState(false)
-
   const [searchTerm, setSearchTerm] = useState('')
 
   // Filter solar suppliers
   const solarSuppliers = microgridServiceProviders
-    .filter(
-      (category) => category.category === 'Solar Suppliers & Distributors',
-    )
+    .filter((category) => category.category === 'Solar Suppliers & Distributors')
     .flatMap((category) => category.data)
 
   // Filter by search term
@@ -41,9 +39,8 @@ export default function SolarProvidersView() {
           <Heading>Solar Suppliers & Distributors in Nigeria</Heading>
 
           <Text>
-            Find reliable solar equipment suppliers and distributors across
-            Nigeria. Connect with providers for your solar projects and energy
-            needs.
+            Find reliable solar equipment suppliers and distributors across Nigeria. Connect with providers for your
+            solar projects and energy needs.
           </Text>
 
           <div className="mt-16 flex max-w-xl gap-4">
@@ -79,7 +76,7 @@ export default function SolarProvidersView() {
       {/* Registration Form */}
       {showForm && (
         <AnimatePresence>
-          <ServiceProviderApplicationForm onClose={() => setShowForm(false)} />
+          <ServiceProviderApplicationForm onClose={() => setShowForm(false)} actionData={actionData} />
         </AnimatePresence>
       )}
 

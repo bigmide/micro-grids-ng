@@ -1,6 +1,6 @@
 /*global React*/
 import { clsx } from 'clsx'
-import { Link } from 'react-router'
+import { Link } from './link'
 
 // ----------------------------------------------------------------------
 
@@ -69,7 +69,7 @@ Card.Title = function CardTitle<T extends React.ElementType = 'h2'>({
 
   return (
     <Component className="text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100">
-      {href ? <Card.Link to={href}>{children}</Card.Link> : children}
+      {href ? <Card.Link href={href}>{children}</Card.Link> : children}
     </Component>
   )
 }

@@ -1,5 +1,7 @@
 import { Outlet } from 'react-router'
 
+// ----------------------------------------------------------------------
+
 export function Sidebar() {
   return (
     <aside className="bg-zinc-50 lg:absolute lg:inset-y-0 lg:left-0 lg:flex lg:w-md lg:items-start lg:overflow-y-auto xl:w-120">

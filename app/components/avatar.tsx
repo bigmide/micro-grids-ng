@@ -1,6 +1,6 @@
 import { clsx } from 'clsx'
 import type React from 'react'
-import { Link } from 'react-router'
+import { Link } from './link'
 
 // ----------------------------------------------------------------------
 
@@ -25,12 +25,12 @@ export function Avatar({
   large = false,
   className,
   ...props
-}: Omit<React.ComponentPropsWithoutRef<typeof Link>, 'to'> & {
+}: Omit<React.ComponentPropsWithoutRef<typeof Link>, 'href'> & {
   large?: boolean
 }) {
   return (
     <Link
-      to="/"
+      href="/"
       aria-label="Home"
       className={clsx(className, 'pointer-events-auto')}
       {...props}

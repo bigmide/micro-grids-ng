@@ -2,6 +2,7 @@ import {
   type RouteConfig,
   index,
   layout,
+  prefix,
   route,
 } from '@react-router/dev/routes'
 
@@ -19,7 +20,13 @@ export default [
 
     route('service-providers', 'routes/service-providers.tsx'),
 
-    route('dashboard', 'routes/admin-dashboard.tsx'),
+    ...prefix('dashboard', [
+      route(':tab', './routes/dashboard/dashboard.tsx'),
+      route(':tab/:name', './routes/dashboard/dashboard-view.tsx'),
+      route(':tab:name/edit', './routes/dashboard/dashboard-edit.tsx'),
+    ]),
+
+    route('dashboard2', './temp/admin-dashboard.tsx'),
 
     route(
       'blog/powering-nigeria-one-community-at-a-time',

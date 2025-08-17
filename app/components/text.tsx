@@ -1,6 +1,8 @@
 import type React from 'react'
 import { clsx } from 'clsx'
-import { Link } from 'react-router'
+import { Link } from './link'
+
+// ----------------------------------------------------------------------
 
 export function Text({
   className,

@@ -1,32 +1,60 @@
 import { createClient } from './supabase/supabase.server'
 import * as z from 'zod'
 import { PostgrestError } from '@supabase/supabase-js'
-import type {
-  MicrogridApplication,
-  MicrogridValidationErrors,
-} from '@/types/microgrids'
+import type { Microgrid, MicrogridValidationErrors } from '@/types/microgrids'
 import { MicrogridSchema } from '@/lib/validation/microgrid-schema'
+import type { Tables } from '@/types/supabase-custom'
+import { fetchSupabaseData } from './supabase/fetch-supabase-data'
+
+// export async function getMicrogrids(request: Request): Promise<{
+//   ok: boolean
+//   data?: Tables<'microgrids'>[] | null
+//   error?: string | null
+//   headers: Headers
+// }> {
+//   const { supabase, headers } = await createClient(request)
+
+//   try {
+//     const { data, error } = await supabase.from(`microgrids`).select('*')
+
+//     if (error) {
+//       throw error
+//     }
+
+//     return {
+//       ok: true,
+//       data,
+//       error: null,
+//       headers,
+//     }
+//   } catch (error) {
+//     if (error instanceof PostgrestError) {
+//       console.error('Error fetching microgrids:', error)
+//       return {
+//         ok: false,
+//         data: null,
+//         error: 'Failed to fetch microgrids. Please try again later.',
+//         headers,
+//       }
+//     }
+
+//     console.error('Unexpected error:', error)
+//     return {
+//       ok: false,
+//       data: null,
+//       error: 'An unexpected error occurred while fetching microgrids.',
+//       headers,
+//     }
+//   }
+// }
 
 export async function getMicrogrids(request: Request) {
-  const { supabase, headers } = await createClient(request)
-
-  const { data, error } = await supabase.from('microgrids').select('*')
-
-  if (error) {
-    console.error(error)
-    throw new Error('Microgrid could not be loaded')
-  }
-
-  return { data, headers }
+  return fetchSupabaseData(request, {
+    table: 'microgrids',
+  })
 }
 
-export async function submitMicrogridSubmissions({
-  formData,
-  request,
-}: {
-  formData: MicrogridApplication
-  request: Request
-}): Promise<{
+export async function submitMicrogrid({ formData, request }: { formData: Microgrid; request: Request }): Promise<{
   ok: boolean
   errors?: MicrogridValidationErrors
   headers: Headers
@@ -36,9 +64,7 @@ export async function submitMicrogridSubmissions({
   try {
     const validatedData = MicrogridSchema.parse(formData)
 
-    const { error } = await supabase
-      .from('microgrid_submissions')
-      .insert([validatedData])
+    const { error } = await supabase.from('microgrids').insert([validatedData])
 
     if (error) {
       throw error
@@ -62,8 +88,7 @@ export async function submitMicrogridSubmissions({
       return {
         ok: false,
         errors: {
-          other:
-            'An unexpected error occurred while submitting microgrid data.',
+          other: 'An unexpected error occurred while submitting microgrid data.',
         },
         headers,
       }

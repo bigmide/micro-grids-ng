@@ -5,37 +5,63 @@ import {
   nigerianStates,
 } from '@/assets/nigeriaGeospatialData'
 import { Combobox, ComboboxLabel, ComboboxOption } from '@/components/combobox'
-import {
-  ErrorMessage,
-  Field,
-  FieldGroup,
-  Fieldset,
-  Label,
-  Legend,
-} from '@/components/fieldset'
+import { ErrorMessage, Field, FieldGroup, Fieldset, Label, Legend } from '@/components/fieldset'
 import { Input } from '@/components/input'
 import { Listbox, ListboxLabel, ListboxOption } from '@/components/listbox'
 import { Text } from '@/components/text'
-import type { MicrogridValidationErrors } from '@/types/microgrids'
+import type { Microgrid, MicrogridValidationErrors } from '@/types/microgrids'
 import { useState } from 'react'
 
 export function LocationDetailsFormSection({
   errors,
+  formValues,
+  onChange,
 }: {
-  errors: MicrogridValidationErrors
+  errors: MicrogridValidationErrors | null
+  formValues: Omit<Microgrid, 'status' | 'slug'>
+  onChange: <T extends keyof Microgrid>(name: T, value: Microgrid[T]) => void
 }) {
   const [state, setState] = useState('')
+
+  const positionError = errors?.validation?.position
+  const latError =
+    positionError?.length === 2
+      ? positionError.at(0)
+      : positionError?.at(0)?.toLowerCase().includes('lat')
+        ? positionError.at(0)
+        : ''
+  const lngError =
+    positionError?.length === 2
+      ? positionError.at(1)
+      : positionError?.at(0)?.toLowerCase().includes('lng')
+        ? positionError.at(0)
+        : ''
 
   return (
     <div>
       <Fieldset aria-label="Location details">
         <FieldGroup>
           <Field>
+            <Label>Address</Label>
+            <Input
+              type="text"
+              name="address"
+              placeholder="No 01, street name, ..."
+              invalid={!!errors?.validation?.address}
+              onChange={(event) => onChange('address', event.target.value)}
+            />
+            {errors?.validation?.address && <ErrorMessage>{errors.validation.address}</ErrorMessage>}
+          </Field>
+
+          <Field>
             <Label>State</Label>
             <Listbox
               name="state"
               placeholder="Select state&hellip;"
-              onChange={(value) => setState(value as string)}
+              onChange={(value) => {
+                setState(value as string)
+                onChange('state', value as string)
+              }}
               invalid={!!errors?.validation?.state}
             >
               {nigerianStates.map((state) => (
@@ -44,9 +70,7 @@ export function LocationDetailsFormSection({
                 </ListboxOption>
               ))}
             </Listbox>
-            {errors?.validation?.state && (
-              <ErrorMessage>{errors.validation.state}</ErrorMessage>
-            )}
+            {errors?.validation?.state && <ErrorMessage>{errors.validation.state}</ErrorMessage>}
           </Field>
 
           <Field>
@@ -56,6 +80,8 @@ export function LocationDetailsFormSection({
               options={getAreasByState(state)}
               displayValue={(area) => area || ''}
               placeholder="Select Area&hellip;"
+              invalid={!!errors?.validation?.area}
+              onChange={(value) => onChange('area', value as string)}
             >
               {(area) => (
                 <ComboboxOption value={area}>
@@ -63,9 +89,7 @@ export function LocationDetailsFormSection({
                 </ComboboxOption>
               )}
             </Combobox>
-            {errors?.validation?.area && (
-              <ErrorMessage>{errors.validation.area}</ErrorMessage>
-            )}
+            {errors?.validation?.area && <ErrorMessage>{errors.validation.area}</ErrorMessage>}
           </Field>
 
           <Field>
@@ -75,6 +99,7 @@ export function LocationDetailsFormSection({
               placeholder="Select LGA&hellip;"
               disabled={!state}
               invalid={!!errors?.validation?.lga}
+              onChange={(value) => onChange('lga', value as string)}
             >
               {getLgaByState(state).map((lga) => (
                 <ListboxOption key={lga} value={lga}>
@@ -82,9 +107,7 @@ export function LocationDetailsFormSection({
                 </ListboxOption>
               ))}
             </Listbox>
-            {errors?.validation?.lga && (
-              <ErrorMessage>{errors.validation.lga}</ErrorMessage>
-            )}
+            {errors?.validation?.lga && <ErrorMessage>{errors.validation.lga}</ErrorMessage>}
           </Field>
 
           <Field>
@@ -94,12 +117,8 @@ export function LocationDetailsFormSection({
               name="geopoliticalZone"
               value={getGeopoliticalZoneByState(state)}
               readOnly
-              invalid={!!errors?.validation?.geopoliticalZone}
               className="pointer-events-none opacity-50 before:bg-zinc-950/5 before:shadow-none"
             />
-            {errors?.validation?.geopoliticalZone && (
-              <ErrorMessage>{errors.validation.geopoliticalZone}</ErrorMessage>
-            )}
           </Field>
         </FieldGroup>
       </Fieldset>
@@ -115,11 +134,15 @@ export function LocationDetailsFormSection({
                 type="text"
                 name="lat"
                 placeholder="Latitude"
-                invalid={!!errors?.validation?.position}
+                invalid={!!latError}
+                onChange={(event) =>
+                  onChange('position', {
+                    ...formValues.position,
+                    lat: event.target.value,
+                  })
+                }
               />
-              {errors?.validation?.position && (
-                <ErrorMessage>{errors.validation.position.at(0)}</ErrorMessage>
-              )}
+              {latError && <ErrorMessage>{latError}</ErrorMessage>}
             </Field>
 
             <Field>
@@ -128,11 +151,15 @@ export function LocationDetailsFormSection({
                 type="text"
                 name="lng"
                 placeholder="Longitude"
-                invalid={!!errors?.validation?.position}
+                invalid={!!lngError}
+                onChange={(event) =>
+                  onChange('position', {
+                    ...formValues.position,
+                    lng: event.target.value,
+                  })
+                }
               />
-              {errors?.validation?.position && (
-                <ErrorMessage>{errors.validation.position.at(1)}</ErrorMessage>
-              )}
+              {lngError && <ErrorMessage>{lngError}</ErrorMessage>}
             </Field>
           </div>
         </FieldGroup>

@@ -1,7 +1,6 @@
-/*global React*/
-
 import { Link } from 'react-router'
 import { ContainerInner, ContainerOuter } from './container'
+import type React from 'react'
 
 // ----------------------------------------------------------------------
 

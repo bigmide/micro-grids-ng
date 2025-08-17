@@ -1,6 +1,6 @@
 import type React from 'react'
-import { Link } from 'react-router'
 import { clsx } from 'clsx'
+import { Link } from './link'
 
 export function LinkEffect({
   className,

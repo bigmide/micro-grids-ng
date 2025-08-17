@@ -1,23 +1,16 @@
-import {
-  microgridCategories,
-  microgridTypes,
-} from '@/assets/microgrids-form-data'
-import {
-  ErrorMessage,
-  Field,
-  FieldGroup,
-  Fieldset,
-  Label,
-} from '@/components/fieldset'
+import { microgridCategories, microgridTypes } from '@/assets/microgrids-form-data'
+import { ErrorMessage, Field, FieldGroup, Fieldset, Label } from '@/components/fieldset'
 import { Input } from '@/components/input'
 import { Listbox, ListboxLabel, ListboxOption } from '@/components/listbox'
 import { Textarea } from '@/components/textarea'
-import type { MicrogridValidationErrors } from '@/types/microgrids'
+import type { Microgrid, MicrogridValidationErrors } from '@/types/microgrids'
 
 export function BasicInfoFormSection({
   errors,
+  onChange,
 }: {
-  errors: MicrogridValidationErrors
+  errors: MicrogridValidationErrors | null
+  onChange: <T extends keyof Microgrid>(name: T, value: Microgrid[T]) => void
 }) {
   return (
     <Fieldset aria-label="Basic information">
@@ -28,6 +21,7 @@ export function BasicInfoFormSection({
             name="category"
             placeholder="Select category&hellip;"
             invalid={!!errors?.validation?.category}
+            onChange={(value) => onChange('category', value as string)}
           >
             {microgridCategories.map((category) => (
               <ListboxOption key={category} value={category}>
@@ -35,9 +29,7 @@ export function BasicInfoFormSection({
               </ListboxOption>
             ))}
           </Listbox>
-          {errors?.validation?.category && (
-            <ErrorMessage>{errors.validation.category}</ErrorMessage>
-          )}
+          {errors?.validation?.category && <ErrorMessage>{errors.validation.category}</ErrorMessage>}
         </Field>
 
         <Field>
@@ -47,10 +39,9 @@ export function BasicInfoFormSection({
             name="microgridName"
             placeholder="e.g., Ikot Solar Mini-grid"
             invalid={!!errors?.validation?.microgridName}
+            onChange={(event) => onChange('microgridName', event.target.value)}
           />
-          {errors?.validation?.microgridName && (
-            <ErrorMessage>{errors.validation.microgridName}</ErrorMessage>
-          )}
+          {errors?.validation?.microgridName && <ErrorMessage>{errors.validation.microgridName}</ErrorMessage>}
         </Field>
 
         <Field>
@@ -61,6 +52,7 @@ export function BasicInfoFormSection({
             maxLength={160}
             placeholder="Brief description of the microgrid (max 160 characters)"
             invalid={!!errors?.validation?.description}
+            onChange={(event) => onChange('description', event.target.value)}
           />
           {<ErrorMessage>{errors?.validation?.description}</ErrorMessage>}
         </Field>
@@ -71,6 +63,7 @@ export function BasicInfoFormSection({
             name="type"
             placeholder="Select type&hellip;"
             invalid={!!errors?.validation?.type}
+            onChange={(value) => onChange('type', value as string)}
           >
             {microgridTypes.map((type) => (
               <ListboxOption key={type} value={type}>
@@ -88,6 +81,9 @@ export function BasicInfoFormSection({
             name="operator"
             placeholder="Organization or individual name"
             invalid={!!errors?.validation?.operator}
+            onChange={(event) => {
+              onChange('operator', event.target.value)
+            }}
           />
           {<ErrorMessage>{errors?.validation?.operator}</ErrorMessage>}
         </Field>

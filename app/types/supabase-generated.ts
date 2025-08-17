@@ -14,81 +14,13 @@ export type Database = {
   }
   public: {
     Tables: {
-      microgrid_submissions: {
-        Row: {
-          area: string
-          capacity: string
-          category: string
-          commissioningDate: string
-          contactName: string
-          createdAt: string
-          description: string
-          email: string
-          geopoliticalZone: string
-          id: number
-          lga: string
-          microgridName: string
-          notes: string | null
-          operator: string
-          position: Json
-          powerSources: string
-          size: string
-          source: string
-          state: string
-          type: string
-        }
-        Insert: {
-          area: string
-          capacity: string
-          category: string
-          commissioningDate: string
-          contactName: string
-          createdAt?: string
-          description: string
-          email: string
-          geopoliticalZone: string
-          id?: number
-          lga: string
-          microgridName: string
-          notes?: string | null
-          operator: string
-          position: Json
-          powerSources: string
-          size: string
-          source: string
-          state: string
-          type: string
-        }
-        Update: {
-          area?: string
-          capacity?: string
-          category?: string
-          commissioningDate?: string
-          contactName?: string
-          createdAt?: string
-          description?: string
-          email?: string
-          geopoliticalZone?: string
-          id?: number
-          lga?: string
-          microgridName?: string
-          notes?: string | null
-          operator?: string
-          position?: Json
-          powerSources?: string
-          size?: string
-          source?: string
-          state?: string
-          type?: string
-        }
-        Relationships: []
-      }
       microgrids: {
         Row: {
+          address: string
           area: string
           capacity: string
           category: string
-          commissioningDate: string
+          commissioningYear: string
           contactName: string
           createdAt: string
           description: string
@@ -102,15 +34,18 @@ export type Database = {
           position: Json
           powerSources: string
           size: string
+          slug: string
           source: string
           state: string
+          status: string
           type: string
         }
         Insert: {
+          address: string
           area: string
           capacity: string
           category: string
-          commissioningDate: string
+          commissioningYear: string
           contactName: string
           createdAt?: string
           description: string
@@ -124,15 +59,18 @@ export type Database = {
           position: Json
           powerSources: string
           size: string
+          slug: string
           source: string
           state: string
+          status: string
           type: string
         }
         Update: {
+          address?: string
           area?: string
           capacity?: string
           category?: string
-          commissioningDate?: string
+          commissioningYear?: string
           contactName?: string
           createdAt?: string
           description?: string
@@ -146,8 +84,10 @@ export type Database = {
           position?: Json
           powerSources?: string
           size?: string
+          slug?: string
           source?: string
           state?: string
+          status?: string
           type?: string
         }
         Relationships: []
@@ -174,7 +114,9 @@ export type Database = {
           phone: string
           position: Json
           productsAndServices: string
+          slug: string
           state: string
+          status: string
           website: string
         }
         Insert: {
@@ -198,7 +140,9 @@ export type Database = {
           phone: string
           position: Json
           productsAndServices: string
+          slug: string
           state: string
+          status: string
           website: string
         }
         Update: {
@@ -222,82 +166,9 @@ export type Database = {
           phone?: string
           position?: Json
           productsAndServices?: string
+          slug?: string
           state?: string
-          website?: string
-        }
-        Relationships: []
-      }
-      service_providers_applications: {
-        Row: {
-          address: string
-          businessClassification: string
-          category: string
-          certification: string
-          city: string
-          commencementYear: string
-          companyName: string
-          connectionMode: string
-          contactName: string
-          coverageAreas: string
-          createdAt: string
-          description: string
-          email: string
-          id: number
-          lga: string
-          logo: string | null
-          notes: string | null
-          phone: string
-          position: Json
-          productsAndServices: string
-          state: string
-          website: string
-        }
-        Insert: {
-          address: string
-          businessClassification: string
-          category: string
-          certification: string
-          city: string
-          commencementYear: string
-          companyName: string
-          connectionMode: string
-          contactName: string
-          coverageAreas: string
-          createdAt?: string
-          description: string
-          email: string
-          id?: number
-          lga: string
-          logo?: string | null
-          notes?: string | null
-          phone: string
-          position: Json
-          productsAndServices: string
-          state: string
-          website: string
-        }
-        Update: {
-          address?: string
-          businessClassification?: string
-          category?: string
-          certification?: string
-          city?: string
-          commencementYear?: string
-          companyName?: string
-          connectionMode?: string
-          contactName?: string
-          coverageAreas?: string
-          createdAt?: string
-          description?: string
-          email?: string
-          id?: number
-          lga?: string
-          logo?: string | null
-          notes?: string | null
-          phone?: string
-          position?: Json
-          productsAndServices?: string
-          state?: string
+          status?: string
           website?: string
         }
         Relationships: []

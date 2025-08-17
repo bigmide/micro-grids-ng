@@ -2,88 +2,20 @@ import { type MergeDeep } from 'type-fest'
 import { type Database as DatabaseGenerated } from './supabase-generated'
 
 // Define your custom JSON type
-type PositionType = { lat: number | string; lng: number | string }
+type PositionType = { lat: string; lng: string }
 
 export type Database = MergeDeep<
   DatabaseGenerated,
   {
     public: {
       Tables: {
-        microgrid_submissions: {
-          Row: {
-            area: string
-            capacity: string
-            category: string
-            commissioningDate: string
-            contactName: string
-            createdAt?: string
-            description: string
-            email: string
-            geopoliticalZone: string
-            id?: number
-            lga: string
-            microgridName: string
-            notes: string | null
-            operator: string
-            position: PositionType
-            powerSources: string
-            size: string
-            source: string
-            state: string
-            type: string
-          }
-          Insert: {
-            area: string
-            capacity: string
-            category: string
-            commissioningDate: string
-            contactName: string
-            createdAt?: string
-            description: string
-            email: string
-            geopoliticalZone: string
-            id?: number
-            lga: string
-            microgridName: string
-            notes?: string | null
-            operator: string
-            position: PositionType
-            powerSources: string
-            size: string
-            source: string
-            state: string
-            type: string
-          }
-          Update: {
-            area?: string
-            capacity?: string
-            category?: string
-            commissioningDate?: string
-            contactName?: string
-            createdAt?: string
-            description?: string
-            email?: string
-            geopoliticalZone?: string
-            id?: number
-            lga?: string
-            microgridName?: string
-            notes?: string | null
-            operator?: string
-            position?: PositionType
-            powerSources?: string
-            size?: string
-            source?: string
-            state?: string
-            type?: string
-          }
-          Relationships: []
-        }
         microgrids: {
           Row: {
+            address: string
             area: string
             capacity: string
             category: string
-            commissioningDate: string
+            commissioningYear: string
             contactName: string
             createdAt?: string
             description: string
@@ -97,15 +29,18 @@ export type Database = MergeDeep<
             position: PositionType
             powerSources: string
             size: string
+            slug: string
             source: string
             state: string
+            status: string
             type: string
           }
           Insert: {
+            address: string
             area: string
             capacity: string
             category: string
-            commissioningDate: string
+            commissioningYear: string
             contactName: string
             createdAt?: string
             description: string
@@ -119,15 +54,18 @@ export type Database = MergeDeep<
             position: PositionType
             powerSources: string
             size: string
+            slug: string
             source: string
             state: string
+            status: string
             type: string
           }
           Update: {
+            address?: string
             area?: string
             capacity?: string
             category?: string
-            commissioningDate?: string
+            commissioningYear?: string
             contactName?: string
             createdAt?: string
             description?: string
@@ -141,8 +79,10 @@ export type Database = MergeDeep<
             position?: PositionType
             powerSources?: string
             size?: string
+            slug?: string
             source?: string
             state?: string
+            status?: string
             type?: string
           }
           Relationships: []
@@ -158,7 +98,7 @@ export type Database = MergeDeep<
             companyName: string
             connectionMode: string
             contactName: string
-            coverageAreas: string
+            coverageAreas: string[]
             createdAt?: string
             description: string
             email: string
@@ -168,8 +108,10 @@ export type Database = MergeDeep<
             notes: string | null
             phone: string
             position: PositionType
-            productsAndServices: string
+            productsAndServices: string[]
+            slug: string
             state: string
+            status: string
             website: string
           }
           Insert: {
@@ -182,7 +124,7 @@ export type Database = MergeDeep<
             companyName: string
             connectionMode: string
             contactName: string
-            coverageAreas: string
+            coverageAreas: string[]
             createdAt?: string
             description: string
             email: string
@@ -192,8 +134,10 @@ export type Database = MergeDeep<
             notes?: string | null
             phone: string
             position: PositionType
-            productsAndServices: string
+            productsAndServices: string[]
+            slug: string
             state: string
+            status: string
             website: string
           }
           Update: {
@@ -206,7 +150,7 @@ export type Database = MergeDeep<
             companyName?: string
             connectionMode?: string
             contactName?: string
-            coverageAreas?: string
+            coverageAreas?: string[]
             createdAt?: string
             description?: string
             email?: string
@@ -216,83 +160,10 @@ export type Database = MergeDeep<
             notes?: string | null
             phone?: string
             position?: PositionType
-            productsAndServices?: string
+            productsAndServices?: string[]
+            slug?: string
             state?: string
-            website?: string
-          }
-          Relationships: []
-        }
-        service_providers_applications: {
-          Row: {
-            address: string
-            businessClassification: string
-            category: string
-            certification: string
-            city: string
-            commencementYear: string
-            companyName: string
-            connectionMode: string
-            contactName: string
-            coverageAreas: string
-            createdAt?: string
-            description: string
-            email: string
-            id?: number
-            lga: string
-            logo: string | null
-            notes: string | null
-            phone: string
-            position: PositionType
-            productsAndServices: string
-            state: string
-            website: string
-          }
-          Insert: {
-            address: string
-            businessClassification: string
-            category: string
-            certification: string
-            city: string
-            commencementYear: string
-            companyName: string
-            connectionMode: string
-            contactName: string
-            coverageAreas: string
-            createdAt?: string
-            description: string
-            email: string
-            id?: number
-            lga: string
-            logo?: string | null
-            notes?: string | null
-            phone: string
-            position: PositionType
-            productsAndServices: string
-            state: string
-            website: string
-          }
-          Update: {
-            address?: string
-            businessClassification?: string
-            category?: string
-            certification?: string
-            city?: string
-            commencementYear?: string
-            companyName?: string
-            connectionMode?: string
-            contactName?: string
-            coverageAreas?: string
-            createdAt?: string
-            description?: string
-            email?: string
-            id?: number
-            lga?: string
-            logo?: string | null
-            notes?: string | null
-            phone?: string
-            position?: PositionType
-            productsAndServices?: string
-            state?: string
+            status?: string
             website?: string
           }
           Relationships: []
@@ -337,10 +208,8 @@ export type Tables<
     }
     ? R
     : never
-  : DefaultSchemaTableNameOrOptions extends keyof (DefaultSchema['Tables'] &
-        DefaultSchema['Views'])
-    ? (DefaultSchema['Tables'] &
-        DefaultSchema['Views'])[DefaultSchemaTableNameOrOptions] extends {
+  : DefaultSchemaTableNameOrOptions extends keyof (DefaultSchema['Tables'] & DefaultSchema['Views'])
+    ? (DefaultSchema['Tables'] & DefaultSchema['Views'])[DefaultSchemaTableNameOrOptions] extends {
         Row: infer R
       }
       ? R
@@ -348,9 +217,7 @@ export type Tables<
     : never
 
 export type TablesInsert<
-  DefaultSchemaTableNameOrOptions extends
-    | keyof DefaultSchema['Tables']
-    | { schema: keyof DatabaseWithoutInternals },
+  DefaultSchemaTableNameOrOptions extends keyof DefaultSchema['Tables'] | { schema: keyof DatabaseWithoutInternals },
   TableName extends DefaultSchemaTableNameOrOptions extends {
     schema: keyof DatabaseWithoutInternals
   }
@@ -373,9 +240,7 @@ export type TablesInsert<
     : never
 
 export type TablesUpdate<
-  DefaultSchemaTableNameOrOptions extends
-    | keyof DefaultSchema['Tables']
-    | { schema: keyof DatabaseWithoutInternals },
+  DefaultSchemaTableNameOrOptions extends keyof DefaultSchema['Tables'] | { schema: keyof DatabaseWithoutInternals },
   TableName extends DefaultSchemaTableNameOrOptions extends {
     schema: keyof DatabaseWithoutInternals
   }
@@ -398,9 +263,7 @@ export type TablesUpdate<
     : never
 
 export type Enums<
-  DefaultSchemaEnumNameOrOptions extends
-    | keyof DefaultSchema['Enums']
-    | { schema: keyof DatabaseWithoutInternals },
+  DefaultSchemaEnumNameOrOptions extends keyof DefaultSchema['Enums'] | { schema: keyof DatabaseWithoutInternals },
   EnumName extends DefaultSchemaEnumNameOrOptions extends {
     schema: keyof DatabaseWithoutInternals
   }

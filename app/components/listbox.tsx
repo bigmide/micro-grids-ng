@@ -2,6 +2,8 @@ import * as Headless from '@headlessui/react'
 import { clsx } from 'clsx'
 import React, { Fragment } from 'react'
 
+// ----------------------------------------------------------------------
+
 export function Listbox<T>({
   className,
   placeholder,
@@ -160,7 +162,7 @@ export function ListboxOption<T>({
             )}
           >
             <svg
-              className="relative hidden size-5 self-center stroke-current group-data-selected/option:inline sm:size-4"
+              className="relative hidden size-5 self-center stroke-current p-1 group-data-selected/option:inline sm:size-4"
               viewBox="0 0 16 16"
               fill="none"
               aria-hidden="true"

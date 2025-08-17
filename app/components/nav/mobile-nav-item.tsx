@@ -1,6 +1,6 @@
 import type React from 'react'
-import { Link } from 'react-router'
 import { PopoverButton } from '@headlessui/react'
+import { Link } from '../link'
 
 // ----------------------------------------------------------------------
 
@@ -13,7 +13,7 @@ export function MobileNavItem({
 }) {
   return (
     <li>
-      <PopoverButton as={Link} to={href} className="block py-2">
+      <PopoverButton as={Link} href={href} className="block py-2">
         {children}
       </PopoverButton>
     </li>
