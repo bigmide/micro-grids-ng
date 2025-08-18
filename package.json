@@ -4,9 +4,12 @@
   "type": "module",
   "scripts": {
     "build": "react-router build",
+    "cf-typegen": "wrangler types",
+    "deploy": "npm run build && wrangler deploy",
     "dev": "react-router dev",
-    "start": "react-router-serve ./build/server/index.js",
-    "typecheck": "react-router typegen && tsc"
+    "postinstall": "npm run cf-typegen",
+    "preview": "npm run build && vite preview",
+    "typecheck": "npm run cf-typegen && react-router typegen && tsc -b"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.4",
@@ -36,6 +39,7 @@
     "zod": "^4.0.14"
   },
   "devDependencies": {
+    "@cloudflare/vite-plugin": "^1.11.5",
     "@eslint/js": "^9.31.0",
     "@mdx-js/loader": "^3.1.0",
     "@mdx-js/react": "^3.1.0",
@@ -71,6 +75,7 @@
     "typescript": "^5.8.3",
     "vite": "^6.3.3",
     "vite-plugin-devtools-json": "^0.2.1",
-    "vite-tsconfig-paths": "^5.1.4"
+    "vite-tsconfig-paths": "^5.1.4",
+    "wrangler": "^4.30.0"
   }
 }
