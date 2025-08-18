@@ -1,20 +1,10 @@
-import {
-  microgridCategories,
-  microgridTypes,
-} from '@/assets/microgrids-form-data'
-import {
-  Description,
-  Field,
-  FieldGroup,
-  Fieldset,
-  Label,
-  Legend,
-} from '@/components/fieldset'
-import { Input } from '@/components/input'
-import { Listbox, ListboxLabel, ListboxOption } from '@/components/listbox'
-import { Select } from '@/components/select'
-import { Text } from '@/components/text'
-import { Textarea } from '@/components/textarea'
+import { microgridCategories, microgridTypes } from '~/assets/microgrids-form-data'
+import { Description, Field, FieldGroup, Fieldset, Label, Legend } from '~/components/fieldset'
+import { Input } from '~/components/input'
+import { Listbox, ListboxLabel, ListboxOption } from '~/components/listbox'
+import { Select } from '~/components/select'
+import { Text } from '~/components/text'
+import { Textarea } from '~/components/textarea'
 import { Form } from 'react-router'
 
 export function EditSupplierApplication() {

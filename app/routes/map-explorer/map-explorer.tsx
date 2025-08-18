@@ -1,8 +1,8 @@
-import { MapExplorerView } from '@/pages/map-explorer/map-explorer'
+import { MapExplorerView } from '~/pages/map-explorer/map-explorer'
 import type { Route } from './+types/map-explorer'
-import { fetchSupabaseData } from '@/services/supabase/fetch-supabase-data'
-import type { Microgrid } from '@/types/microgrids'
-import type { ServiceProvider } from '@/types/service-providers'
+import { fetchSupabaseData } from '~/services/supabase/fetch-supabase-data'
+import type { Microgrid } from '~/types/microgrids'
+import type { ServiceProvider } from '~/types/service-providers'
 
 // ----------------------------------------------------------------------
 

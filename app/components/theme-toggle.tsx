@@ -1,4 +1,4 @@
-import { useTheme } from '@/context/theme-context'
+import { useTheme } from '~/context/theme-context'
 import { useFetcher } from 'react-router'
 import { SunIcon } from './icons/sun-icon'
 import { MoonIcon } from './icons/moon-icon'

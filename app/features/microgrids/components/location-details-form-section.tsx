@@ -3,13 +3,13 @@ import {
   getGeopoliticalZoneByState,
   getLgaByState,
   nigerianStates,
-} from '@/assets/nigeriaGeospatialData'
-import { Combobox, ComboboxLabel, ComboboxOption } from '@/components/combobox'
-import { ErrorMessage, Field, FieldGroup, Fieldset, Label, Legend } from '@/components/fieldset'
-import { Input } from '@/components/input'
-import { Listbox, ListboxLabel, ListboxOption } from '@/components/listbox'
-import { Text } from '@/components/text'
-import type { Microgrid, MicrogridValidationErrors } from '@/types/microgrids'
+} from '~/assets/nigeriaGeospatialData'
+import { Combobox, ComboboxLabel, ComboboxOption } from '~/components/combobox'
+import { ErrorMessage, Field, FieldGroup, Fieldset, Label, Legend } from '~/components/fieldset'
+import { Input } from '~/components/input'
+import { Listbox, ListboxLabel, ListboxOption } from '~/components/listbox'
+import { Text } from '~/components/text'
+import type { Microgrid, MicrogridValidationErrors } from '~/types/microgrids'
 import { useState } from 'react'
 
 export function LocationDetailsFormSection({

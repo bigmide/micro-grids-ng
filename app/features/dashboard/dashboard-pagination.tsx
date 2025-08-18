@@ -5,7 +5,7 @@ import {
   PaginationNext,
   PaginationPage,
   PaginationPrevious,
-} from '@/components/pagination'
+} from '~/components/pagination'
 
 export function DashboardPagination() {
   return (

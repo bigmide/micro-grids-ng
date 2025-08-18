@@ -1,5 +1,5 @@
-import { BlogView } from '@/pages/blog'
-import { getAllPosts } from '@/features/blog/utils/posts.server'
+import { BlogView } from '~/pages/blog'
+import { getAllPosts } from '~/features/blog/utils/posts.server'
 import type { Route } from '../+types/blog'
 
 // ----------------------------------------------------------------------

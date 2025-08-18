@@ -1,12 +1,12 @@
 /* global process*/
 
-import ServiceProvidersView from '@/pages/service-providers'
+import ServiceProvidersView from '~/pages/service-providers'
 import type { Route } from './+types/service-providers'
-import { submitSupabaseData } from '@/services/supabase/submit-supabase-data'
-import type { ServiceProvider } from '@/types/service-providers'
-import { ServiceProviderSchema } from '@/lib/validation/service-provider-schema'
+import { submitSupabaseData } from '~/services/supabase/submit-supabase-data'
+import type { ServiceProvider } from '~/types/service-providers'
+import { ServiceProviderSchema } from '~/lib/validation/service-provider-schema'
 import { data } from 'react-router'
-import { fetchSupabaseData } from '@/services/supabase/fetch-supabase-data'
+import { fetchSupabaseData } from '~/services/supabase/fetch-supabase-data'
 
 // ----------------------------------------------------------------------
 

@@ -1,6 +1,6 @@
-import { Post } from '@/features/blog/components/post'
-import type { PostFrontmatterWithSlug } from '@/features/blog/types/post.types'
-import { SimpleLayout } from '@/layouts/simple-layout'
+import { Post } from '~/features/blog/components/post'
+import type { PostFrontmatterWithSlug } from '~/features/blog/types/post.types'
+import { SimpleLayout } from '~/layouts/simple-layout'
 
 // ----------------------------------------------------------------------
 

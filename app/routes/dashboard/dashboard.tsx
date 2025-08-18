@@ -1,7 +1,7 @@
-import { DashboardView } from '@/pages/dashboard/dashboard'
+import { DashboardView } from '~/pages/dashboard/dashboard'
 import { data } from 'react-router'
 import type { Route } from './+types/dashboard'
-import { fetchSupabaseData } from '@/services/supabase/fetch-supabase-data'
+import { fetchSupabaseData } from '~/services/supabase/fetch-supabase-data'
 
 // ----------------------------------------------------------------------
 

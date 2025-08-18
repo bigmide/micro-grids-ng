@@ -1,4 +1,4 @@
-import { AuthorView } from '@/pages/author'
+import { AuthorView } from '~/pages/author'
 
 // ----------------------------------------------------------------------
 

@@ -1,9 +1,9 @@
 import { useId } from 'react'
-import { ChevronRightToCrossIcon } from '@/components/icons/chevron-right-to-cross-icon'
+import { ChevronRightToCrossIcon } from '~/components/icons/chevron-right-to-cross-icon'
 import { NavLink } from 'react-router'
 import { clsx } from 'clsx'
-import type { Microgrid } from '@/types/microgrids'
-import type { ServiceProvider } from '@/types/service-providers'
+import type { Microgrid } from '~/types/microgrids'
+import type { ServiceProvider } from '~/types/service-providers'
 
 // ----------------------------------------------------------------------
 

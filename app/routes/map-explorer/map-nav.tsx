@@ -1,6 +1,6 @@
-import { MapNavView } from '@/pages/map-explorer/map-nav'
+import { MapNavView } from '~/pages/map-explorer/map-nav'
 import type { Route } from './+types/map-nav'
-import { fetchSupabaseData } from '@/services/supabase/fetch-supabase-data'
+import { fetchSupabaseData } from '~/services/supabase/fetch-supabase-data'
 
 // ----------------------------------------------------------------------
 

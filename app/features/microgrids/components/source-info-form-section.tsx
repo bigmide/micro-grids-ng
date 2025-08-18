@@ -1,6 +1,6 @@
-import { ErrorMessage, Field, FieldGroup, Fieldset, Label } from '@/components/fieldset'
-import { Input } from '@/components/input'
-import type { Microgrid, MicrogridValidationErrors } from '@/types/microgrids'
+import { ErrorMessage, Field, FieldGroup, Fieldset, Label } from '~/components/fieldset'
+import { Input } from '~/components/input'
+import type { Microgrid, MicrogridValidationErrors } from '~/types/microgrids'
 
 export function SourceInfoFormSection({
   errors,

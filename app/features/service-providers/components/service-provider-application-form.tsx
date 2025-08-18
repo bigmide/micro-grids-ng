@@ -1,10 +1,10 @@
-import { Button } from '@/components/button'
-import { Divider } from '@/components/divider'
-import { Description, ErrorMessage, Field, FieldGroup, Fieldset, Label } from '@/components/fieldset'
-import { CrossIcon } from '@/components/icons/cross-icon'
-import { Input } from '@/components/input'
-import { Listbox, ListboxLabel, ListboxOption } from '@/components/listbox'
-import { Textarea } from '@/components/textarea'
+import { Button } from '~/components/button'
+import { Divider } from '~/components/divider'
+import { Description, ErrorMessage, Field, FieldGroup, Fieldset, Label } from '~/components/fieldset'
+import { CrossIcon } from '~/components/icons/cross-icon'
+import { Input } from '~/components/input'
+import { Listbox, ListboxLabel, ListboxOption } from '~/components/listbox'
+import { Textarea } from '~/components/textarea'
 import { Form, useNavigation } from 'react-router'
 import { motion } from 'motion/react'
 import {
@@ -13,14 +13,14 @@ import {
   serviceProvidersCategories,
   serviceProvidersCoverageAreas,
   serviceProvidersProductsAndServices,
-} from '@/assets/service-providers-form-data'
-import { getLgaByState, nigerianStates } from '@/assets/nigeriaGeospatialData'
+} from '~/assets/service-providers-form-data'
+import { getLgaByState, nigerianStates } from '~/assets/nigeriaGeospatialData'
 import React, { useEffect, useRef, useState } from 'react'
-import { InputWithAddOn } from '@/components/input-with-add-on'
-import { ReactSelectMultiSelect } from '@/components/react-select-multi-select'
-import type { ServiceProvider, ServiceProviderValidationErrors } from '@/types/service-providers'
+import { InputWithAddOn } from '~/components/input-with-add-on'
+import { ReactSelectMultiSelect } from '~/components/react-select-multi-select'
+import type { ServiceProvider, ServiceProviderValidationErrors } from '~/types/service-providers'
 import { toast } from 'sonner'
-import { ServiceProviderSchema } from '@/lib/validation/service-provider-schema'
+import { ServiceProviderSchema } from '~/lib/validation/service-provider-schema'
 import * as z from 'zod'
 
 // ----------------------------------------------------------------------

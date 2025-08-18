@@ -53,9 +53,6 @@ export default defineConfig([
     files: ['**/*.{ts,tsx}'],
     languageOptions: {
       parser: parserTypeScript,
-      parserOptions: {
-        project: './tsconfig.json',
-      },
     },
     plugins: {
       '@typescript-eslint': pluginTypeScript,

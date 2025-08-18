@@ -1,6 +1,6 @@
-import { Pagination, PaginationList, PaginationNext, PaginationPage, PaginationPrevious } from '@/components/pagination'
+import { Pagination, PaginationList, PaginationNext, PaginationPage, PaginationPrevious } from '~/components/pagination'
 import { ServiceProviderCard } from './service-provider-card'
-import type { ServiceProvider } from '@/types/service-providers'
+import type { ServiceProvider } from '~/types/service-providers'
 import { useSearchParams } from 'react-router'
 
 // ----------------------------------------------------------------------

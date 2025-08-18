@@ -1,13 +1,13 @@
 /* global  Buffer*/
 
-import { logger, logError } from '@/lib/logger'
-import type { Database } from '@/types/supabase-custom'
+import { logger, logError } from '~/lib/logger'
+import type { Database } from '~/types/supabase-custom'
 import * as z from 'zod'
 import { createClient } from './supabase.server'
-import type { MicrogridSchema } from '@/lib/validation/microgrid-schema'
-import type { ServiceProviderSchema } from '@/lib/validation/service-provider-schema'
-import type { Microgrid, MicrogridValidationErrors } from '@/types/microgrids'
-import type { ServiceProvider, ServiceProviderValidationErrors } from '@/types/service-providers'
+import type { MicrogridSchema } from '~/lib/validation/microgrid-schema'
+import type { ServiceProviderSchema } from '~/lib/validation/service-provider-schema'
+import type { Microgrid, MicrogridValidationErrors } from '~/types/microgrids'
+import type { ServiceProvider, ServiceProviderValidationErrors } from '~/types/service-providers'
 import { PostgrestError } from '@supabase/supabase-js'
 
 type Data = Microgrid | ServiceProvider

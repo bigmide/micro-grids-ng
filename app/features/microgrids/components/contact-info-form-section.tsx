@@ -1,7 +1,7 @@
-import { ErrorMessage, Field, FieldGroup, Fieldset, Label } from '@/components/fieldset'
-import { Input } from '@/components/input'
-import { Textarea } from '@/components/textarea'
-import type { Microgrid, MicrogridValidationErrors } from '@/types/microgrids'
+import { ErrorMessage, Field, FieldGroup, Fieldset, Label } from '~/components/fieldset'
+import { Input } from '~/components/input'
+import { Textarea } from '~/components/textarea'
+import type { Microgrid, MicrogridValidationErrors } from '~/types/microgrids'
 
 export function ContactInfoFormSection({
   errors,

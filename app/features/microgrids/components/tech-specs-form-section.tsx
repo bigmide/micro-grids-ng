@@ -1,8 +1,8 @@
-import { microgridPowerSourceOptions } from '@/assets/microgrids-form-data'
-import { ErrorMessage, Field, FieldGroup, Fieldset, Label } from '@/components/fieldset'
-import { InputWithDropdown } from '@/components/input-with-dropdown'
-import { Listbox, ListboxLabel, ListboxOption } from '@/components/listbox'
-import type { Microgrid, MicrogridValidationErrors } from '@/types/microgrids'
+import { microgridPowerSourceOptions } from '~/assets/microgrids-form-data'
+import { ErrorMessage, Field, FieldGroup, Fieldset, Label } from '~/components/fieldset'
+import { InputWithDropdown } from '~/components/input-with-dropdown'
+import { Listbox, ListboxLabel, ListboxOption } from '~/components/listbox'
+import type { Microgrid, MicrogridValidationErrors } from '~/types/microgrids'
 
 export function TechSpecsFormSection({
   errors,

@@ -1,8 +1,8 @@
-import { Container } from '@/components/container'
-import { Stats } from '@/components/stats'
-import { Hero } from '@/features/home/components/hero'
-import { Newsletter } from '@/features/home/components/newsletter'
-import { QuickLink } from '@/features/home/components/quick-link'
+import { Container } from '~/components/container'
+import { Stats } from '~/components/stats'
+import { Hero } from '~/features/home/components/hero'
+import { Newsletter } from '~/features/home/components/newsletter'
+import { QuickLink } from '~/features/home/components/quick-link'
 import type { Route } from '../routes/+types/home'
 
 // ----------------------------------------------------------------------

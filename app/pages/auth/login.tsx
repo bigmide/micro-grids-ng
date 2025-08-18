@@ -1,9 +1,9 @@
-import { Button } from '@/components/button'
-import { Checkbox, CheckboxField } from '@/components/checkbox'
-import { Field, Label } from '@/components/fieldset'
-import { Heading } from '@/components/heading'
-import { Input } from '@/components/input'
-import { Strong, Text, TextLink } from '@/components/text'
+import { Button } from '~/components/button'
+import { Checkbox, CheckboxField } from '~/components/checkbox'
+import { Field, Label } from '~/components/fieldset'
+import { Heading } from '~/components/heading'
+import { Input } from '~/components/input'
+import { Strong, Text, TextLink } from '~/components/text'
 import { Form } from 'react-router'
 
 export function LoginView() {

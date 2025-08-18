@@ -1,6 +1,6 @@
-import { MapDetailsView } from '@/pages/map-explorer/map-details'
+import { MapDetailsView } from '~/pages/map-explorer/map-details'
 import type { Route } from './+types/map-details'
-import { fetchSupabaseData } from '@/services/supabase/fetch-supabase-data'
+import { fetchSupabaseData } from '~/services/supabase/fetch-supabase-data'
 
 // ----------------------------------------------------------------------
 

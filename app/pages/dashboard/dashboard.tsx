@@ -1,12 +1,12 @@
-import { Container } from '@/components/container'
+import { Container } from '~/components/container'
 
-import { DashboardMicrogridSubmissionsPanel } from '@/features/dashboard/dashboard-microgrid-submissions-panel'
-import { DashboardPagination } from '@/features/dashboard/dashboard-pagination'
+import { DashboardMicrogridSubmissionsPanel } from '~/features/dashboard/dashboard-microgrid-submissions-panel'
+import { DashboardPagination } from '~/features/dashboard/dashboard-pagination'
 import { useEffect, useMemo, useState } from 'react'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import { toast } from 'sonner'
 import { clsx } from 'clsx'
-import { Link } from '@/components/link'
+import { Link } from '~/components/link'
 import type { Route } from '../../routes/dashboard/+types/dashboard'
 
 export function DashboardView({ loaderData }: Route.ComponentProps) {
@@ -49,10 +49,7 @@ export function DashboardView({ loaderData }: Route.ComponentProps) {
   return (
     <Container className="mt-16">
       <div className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
-        <Tabs
-          selectedIndex={activeTab}
-          onSelect={(index) => setActiveTab(index)}
-        >
+        <Tabs selectedIndex={activeTab} onSelect={(index) => setActiveTab(index)}>
           <TabList className="-mb-px flex space-x-8 border-b border-zinc-100 dark:border-b-white/10">
             {tabs.map((tab) => (
               <Tab

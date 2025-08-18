@@ -1,12 +1,12 @@
 import { useLoaderData, useNavigate, useParams } from 'react-router'
-import { Text } from '@/components/text'
+import { Text } from '~/components/text'
 
 import { MapDetailCard } from '../../features/map/components/map-detail-card'
 import { MapDetailItem } from '../../features/map/components/map-detail-item'
 import { MapBackButton } from '../../features/map/components/map-back-button'
 import { MapBackLink } from '../../features/map/components/map-back-link'
-import type { Microgrid } from '@/types/microgrids'
-import type { ServiceProvider } from '@/types/service-providers'
+import type { Microgrid } from '~/types/microgrids'
+import type { ServiceProvider } from '~/types/service-providers'
 
 export function MapDetailsView() {
   let navigate = useNavigate()

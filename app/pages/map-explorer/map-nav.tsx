@@ -1,8 +1,8 @@
 import { useState, useCallback } from 'react'
 import { useLoaderData } from 'react-router'
 import { MapNavCategorySection } from '../../features/map/components/map-nav-category-section'
-import type { Microgrid } from '@/types/microgrids'
-import type { ServiceProvider } from '@/types/service-providers'
+import type { Microgrid } from '~/types/microgrids'
+import type { ServiceProvider } from '~/types/service-providers'
 
 // ----------------------------------------------------------------------
 

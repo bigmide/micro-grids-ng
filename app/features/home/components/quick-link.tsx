@@ -1,16 +1,8 @@
-import { Card } from '@/components/card'
+import { Card } from '~/components/card'
 
 // ----------------------------------------------------------------------
 
-export function QuickLink({
-  href,
-  title,
-  description,
-}: {
-  href: string
-  title: string
-  description: string
-}) {
+export function QuickLink({ href, title, description }: { href: string; title: string; description: string }) {
   return (
     <Card as="article">
       <Card.Title href={href}>{title}</Card.Title>

@@ -1,7 +1,7 @@
 // ----------------------------------------------------------------------
 
-import { HomeView } from '@/pages/home'
-import { fetchSupabaseData } from '@/services/supabase/fetch-supabase-data'
+import { HomeView } from '~/pages/home'
+import { fetchSupabaseData } from '~/services/supabase/fetch-supabase-data'
 import type { Route } from './+types/home'
 
 export function meta() {

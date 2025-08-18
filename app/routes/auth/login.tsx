@@ -1,4 +1,4 @@
-import { LoginView } from '@/pages/auth/login'
+import { LoginView } from '~/pages/auth/login'
 
 export function meta() {
   return [{ title: 'Login' }]

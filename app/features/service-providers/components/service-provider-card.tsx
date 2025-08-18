@@ -1,10 +1,10 @@
 import { useState } from 'react'
-import { Badge } from '@/components/badge'
-import { Button } from '@/components/button'
-import { Heading } from '@/components/heading'
-import { Text } from '@/components/text'
-import type { ServiceProvider } from '@/types/service-providers'
-import { Dialog, DialogActions, DialogBody, DialogDescription, DialogTitle } from '@/components/dialog'
+import { Badge } from '~/components/badge'
+import { Button } from '~/components/button'
+import { Heading } from '~/components/heading'
+import { Text } from '~/components/text'
+import type { ServiceProvider } from '~/types/service-providers'
+import { Dialog, DialogActions, DialogBody, DialogDescription, DialogTitle } from '~/components/dialog'
 
 // ----------------------------------------------------------------------
 

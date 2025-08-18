@@ -1,6 +1,6 @@
-import { Button } from '@/components/button'
-import { Container } from '@/components/container'
-import { LinkEffect } from '@/components/link-effect'
+import { Button } from '~/components/button'
+import { Container } from '~/components/container'
+import { LinkEffect } from '~/components/link-effect'
 import { DotLottieReact } from '@lottiefiles/dotlottie-react'
 
 // ----------------------------------------------------------------------

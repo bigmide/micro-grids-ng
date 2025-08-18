@@ -1,11 +1,11 @@
 import { useLoaderData, useNavigate } from 'react-router'
-import { useUrlPosition } from '@/hooks/useUrlPosition'
+import { useUrlPosition } from '~/hooks/useUrlPosition'
 import type { LatLngExpression } from 'leaflet'
 import { useEffect, useState } from 'react'
 import L from 'leaflet'
 import { MapContainer, Marker, Popup, TileLayer, useMap, useMapEvents } from 'react-leaflet'
-import type { Microgrid } from '@/types/microgrids'
-import type { ServiceProvider } from '@/types/service-providers'
+import type { Microgrid } from '~/types/microgrids'
+import type { ServiceProvider } from '~/types/service-providers'
 
 // ----------------------------------------------------------------------
 

@@ -1,9 +1,9 @@
 import { createClient } from './supabase/supabase.server'
 import * as z from 'zod'
 import { PostgrestError } from '@supabase/supabase-js'
-import type { Microgrid, MicrogridValidationErrors } from '@/types/microgrids'
-import { MicrogridSchema } from '@/lib/validation/microgrid-schema'
-import type { Tables } from '@/types/supabase-custom'
+import type { Microgrid, MicrogridValidationErrors } from '~/types/microgrids'
+import { MicrogridSchema } from '~/lib/validation/microgrid-schema'
+import type { Tables } from '~/types/supabase-custom'
 import { fetchSupabaseData } from './supabase/fetch-supabase-data'
 
 // export async function getMicrogrids(request: Request): Promise<{

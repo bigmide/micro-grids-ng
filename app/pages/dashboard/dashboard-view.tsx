@@ -1,8 +1,8 @@
-import { Container } from '@/components/container'
-import { ArrowLeftIcon } from '@/components/icons/arrow-left-icon'
-import { AppContext } from '@/context/providers'
-import { InfoCard } from '@/features/dashboard/components/info-card'
-import { LocationCard } from '@/features/dashboard/components/location-card'
+import { Container } from '~/components/container'
+import { ArrowLeftIcon } from '~/components/icons/arrow-left-icon'
+import { AppContext } from '~/context/providers'
+import { InfoCard } from '~/features/dashboard/components/info-card'
+import { LocationCard } from '~/features/dashboard/components/location-card'
 import { useContext } from 'react'
 import { useNavigate } from 'react-router'
 
@@ -54,10 +54,7 @@ export function DashboardViewView() {
               />
             </div>
 
-            <LocationCard
-              lat={'submission.position.lat'}
-              lng={'submission.position.lng'}
-            />
+            <LocationCard lat={'submission.position.lat'} lng={'submission.position.lng'} />
 
             <InfoCard
               title="Submission Details"

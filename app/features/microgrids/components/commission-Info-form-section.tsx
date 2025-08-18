@@ -1,6 +1,6 @@
-import { ErrorMessage, Field, FieldGroup, Fieldset, Label } from '@/components/fieldset'
-import { Listbox, ListboxLabel, ListboxOption } from '@/components/listbox'
-import type { Microgrid, MicrogridValidationErrors } from '@/types/microgrids'
+import { ErrorMessage, Field, FieldGroup, Fieldset, Label } from '~/components/fieldset'
+import { Listbox, ListboxLabel, ListboxOption } from '~/components/listbox'
+import type { Microgrid, MicrogridValidationErrors } from '~/types/microgrids'
 import { useMemo } from 'react'
 
 export function CommissioningInfoFormSection({

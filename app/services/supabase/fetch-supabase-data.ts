@@ -1,10 +1,10 @@
-import { logError } from '@/lib/logger'
-import type { Database } from '@/types/supabase-custom'
+import { logError } from '~/lib/logger'
+import type { Database } from '~/types/supabase-custom'
 import { createClient } from './supabase.server'
 import { PostgrestError } from '@supabase/supabase-js'
 import type { PostgrestFilterBuilder } from '@supabase/postgrest-js'
-import type { Microgrid } from '@/types/microgrids'
-import type { ServiceProvider } from '@/types/service-providers'
+import type { Microgrid } from '~/types/microgrids'
+import type { ServiceProvider } from '~/types/service-providers'
 
 // eslint-disable-next-line no-undef, @typescript-eslint/no-explicit-any
 type FetchQuery = PostgrestFilterBuilder<any, any, GenericStringError[], 'microgrids' | 'service_providers', unknown>

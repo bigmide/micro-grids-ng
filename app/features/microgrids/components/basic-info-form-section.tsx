@@ -1,9 +1,9 @@
-import { microgridCategories, microgridTypes } from '@/assets/microgrids-form-data'
-import { ErrorMessage, Field, FieldGroup, Fieldset, Label } from '@/components/fieldset'
-import { Input } from '@/components/input'
-import { Listbox, ListboxLabel, ListboxOption } from '@/components/listbox'
-import { Textarea } from '@/components/textarea'
-import type { Microgrid, MicrogridValidationErrors } from '@/types/microgrids'
+import { microgridCategories, microgridTypes } from '~/assets/microgrids-form-data'
+import { ErrorMessage, Field, FieldGroup, Fieldset, Label } from '~/components/fieldset'
+import { Input } from '~/components/input'
+import { Listbox, ListboxLabel, ListboxOption } from '~/components/listbox'
+import { Textarea } from '~/components/textarea'
+import type { Microgrid, MicrogridValidationErrors } from '~/types/microgrids'
 
 export function BasicInfoFormSection({
   errors,

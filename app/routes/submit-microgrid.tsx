@@ -1,9 +1,9 @@
-import { SubmitMicrogridView } from '@/pages/submit-microgrid'
+import { SubmitMicrogridView } from '~/pages/submit-microgrid'
 import type { Route } from './+types/submit-microgrid'
 import { data } from 'react-router'
-import type { Microgrid } from '@/types/microgrids'
-import { submitSupabaseData } from '@/services/supabase/submit-supabase-data'
-import { MicrogridSchema } from '@/lib/validation/microgrid-schema'
+import type { Microgrid } from '~/types/microgrids'
+import { submitSupabaseData } from '~/services/supabase/submit-supabase-data'
+import { MicrogridSchema } from '~/lib/validation/microgrid-schema'
 
 // ----------------------------------------------------------------------
 

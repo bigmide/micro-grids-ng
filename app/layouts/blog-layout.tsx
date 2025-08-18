@@ -1,21 +1,15 @@
 import React, { useContext } from 'react'
-import { formatDate } from '@/utils/format-date'
+import { formatDate } from '~/utils/format-date'
 import { useNavigate } from 'react-router'
-import { AppContext } from '@/context/providers'
-import { Prose } from '@/features/blog/components/prose'
-import { Container } from '@/components/container'
-import { ArrowLeftIcon } from '@/components/icons/arrow-left-icon'
-import type { PostFrontmatterWithSlug } from '@/features/blog/types/post.types'
+import { AppContext } from '~/context/providers'
+import { Prose } from '~/features/blog/components/prose'
+import { Container } from '~/components/container'
+import { ArrowLeftIcon } from '~/components/icons/arrow-left-icon'
+import type { PostFrontmatterWithSlug } from '~/features/blog/types/post.types'
 
 // ----------------------------------------------------------------------
 
-export function BlogLayout({
-  post,
-  children,
-}: {
-  post: PostFrontmatterWithSlug
-  children: React.ReactNode
-}) {
+export function BlogLayout({ post, children }: { post: PostFrontmatterWithSlug; children: React.ReactNode }) {
   const navigate = useNavigate()
   const { previousPathname } = useContext(AppContext)
 

@@ -1,4 +1,4 @@
-import { AboutView } from '@/pages/about'
+import { AboutView } from '~/pages/about'
 
 // ----------------------------------------------------------------------
 

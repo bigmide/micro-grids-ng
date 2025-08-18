@@ -1,6 +1,6 @@
-import { Footer } from '@/components/footer'
-import { Header } from '@/components/header'
-import { HeroPattern } from '@/components/hero-pattern'
+import { Footer } from '~/components/footer'
+import { Header } from '~/components/header'
+import { HeroPattern } from '~/components/hero-pattern'
 import { Outlet, useLocation } from 'react-router'
 
 // ----------------------------------------------------------------------

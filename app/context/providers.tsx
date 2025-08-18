@@ -1,5 +1,3 @@
-'use client'
-
 /*global React*/
 
 import { createContext, useEffect, useRef } from 'react'
@@ -46,13 +44,7 @@ function ThemeWatcher() {
 
 export const AppContext = createContext<{ previousPathname?: string }>({})
 
-export function Providers({
-  theme,
-  children,
-}: {
-  theme: Theme
-  children: React.ReactNode
-}) {
+export function Providers({ theme, children }: { theme: Theme; children: React.ReactNode }) {
   let pathname = useLocation().pathname
   let previousPathname = usePrevious(pathname)
 
