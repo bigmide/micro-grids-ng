@@ -1,5 +1,14 @@
 /*global React*/
-import { data, isRouteErrorResponse, Links, Meta, Outlet, Scripts, ScrollRestoration } from 'react-router'
+import {
+  data,
+  isRouteErrorResponse,
+  Links,
+  Meta,
+  Outlet,
+  Scripts,
+  ScrollRestoration,
+  useNavigation,
+} from 'react-router'
 
 import './styles/tailwind.css'
 import type { Route } from './+types/root'
@@ -7,6 +16,7 @@ import { Providers } from './context/providers'
 import { Toaster } from 'sonner'
 
 import { themeCookie } from '~/utils/theme.server'
+import GlobalLoader from './components/global-loader'
 
 export async function loader({ request }: Route.LoaderArgs) {
   const cookieHeader = request.headers.get('Cookie')
@@ -65,10 +75,13 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App({ loaderData }: Route.ComponentProps) {
+  const navigation = useNavigation()
+  const isNavigating = Boolean(navigation.location)
   const { theme } = loaderData
 
   return (
     <>
+      {isNavigating && <GlobalLoader />}
       <Providers theme={theme}>
         <Outlet />
       </Providers>

@@ -5,6 +5,8 @@
   "compatibility_flags": ["nodejs_compat"],
   "main": "./workers/app.ts",
   "vars": {
-    "VALUE_FROM_CLOUDFLARE": "Hello from Cloudflare",
+    "LOG_LEVEL": "debug",
+    "NODE_ENV": "production",
+    "ENV": "production",
   },
 }
