@@ -2,16 +2,12 @@ import type React from 'react'
 import { clsx } from 'clsx'
 import * as Headless from '@headlessui/react'
 import { Link } from './link'
+import { twMerge } from 'tailwind-merge'
 
 function ArrowIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
     <svg viewBox="0 0 20 20" fill="none" aria-hidden="true" {...props}>
-      <path
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="m11.5 6.5 3 3.5m0 0-3 3.5m3-3.5h-9"
-      />
+      <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" d="m11.5 6.5 3 3.5m0 0-3 3.5m3-3.5h-9" />
     </svg>
   )
 }
@@ -28,7 +24,7 @@ const variantStyles = {
   text: 'text-teal-500 data-hover:text-teal-600 dark:text-teal-400 dark:data-hover:text-teal-500',
   plain: clsx(
     // Base
-    'relative isolate inline-flex items-baseline justify-center gap-x-2 rounded-lg border text-base/6 font-semibold',
+    'isolate inline-flex items-baseline justify-center gap-x-2 rounded-lg border text-base/6 font-semibold',
     // Sizing
     'px-[calc(--spacing(3.5)-1px)] py-[calc(--spacing(2.5)-1px)] sm:px-[calc(--spacing(3)-1px)] sm:py-[calc(--spacing(1.5)-1px)] sm:text-sm/6',
     // Focus
@@ -52,21 +48,11 @@ type ButtonProps = {
   ref?: React.RefObject<HTMLElement>
   className?: string
   children: React.ReactNode
-} & (
-  | Omit<React.ComponentPropsWithoutRef<typeof Link>, 'className'>
-  | Omit<Headless.ButtonProps, 'as' | 'className'>
-)
+} & (Omit<React.ComponentPropsWithoutRef<typeof Link>, 'className'> | Omit<Headless.ButtonProps, 'as' | 'className'>)
 
-export function Button({
-  variant = 'primary',
-  className,
-  children,
-  arrow,
-  ref,
-  ...props
-}: ButtonProps) {
-  className = clsx(
-    'inline-flex gap-0.5 justify-center overflow-hidden text-sm font-medium transition rounded-md',
+export function Button({ variant = 'primary', className, children, arrow, ref, ...props }: ButtonProps) {
+  className = twMerge(
+    'relative inline-flex gap-0.5 justify-center overflow-hidden text-sm font-medium transition rounded-md',
     variantStyles[variant],
     className,
   )
@@ -91,11 +77,7 @@ export function Button({
   )
 
   return 'href' in props ? (
-    <Link
-      className={className}
-      ref={ref as React.RefObject<HTMLAnchorElement>}
-      {...props}
-    >
+    <Link className={className} ref={ref as React.RefObject<HTMLAnchorElement>} {...props}>
       <TouchTarget>{inner}</TouchTarget>
     </Link>
   ) : (

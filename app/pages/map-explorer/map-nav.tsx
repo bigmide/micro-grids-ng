@@ -15,9 +15,15 @@ export function MapNavView() {
     serviceProviders: ServiceProvider[]
   } = useLoaderData()
 
-  const microgridsCategories = microgrids.map((microgridCategory) => microgridCategory.category)
+  const microgridsCategories = microgrids.map((microgrid) => ({
+    key: `${microgrid.category}-${microgrid.microgridName}`,
+    value: microgrid.category,
+  }))
 
-  const serviceProvidersCategories = serviceProviders.map((provider) => provider.category)
+  const serviceProvidersCategories = serviceProviders.map((provider) => ({
+    key: `${provider.category}-${provider.companyName}`,
+    value: provider.category,
+  }))
 
   const [expandedCategories, setExpandedCategories] = useState<Record<string, boolean>>({})
 
@@ -37,10 +43,10 @@ export function MapNavView() {
 
         {microgridsCategories.map((category) => (
           <MapNavCategorySection
-            key={category}
-            category={category}
-            items={microgrids.filter((microgrid) => microgrid.category === category)}
-            isExpanded={expandedCategories[category]}
+            key={category.key}
+            category={category.value}
+            items={microgrids.filter((microgrid) => microgrid.category === category.value)}
+            isExpanded={expandedCategories[category.value]}
             onToggle={toggleCategory}
           />
         ))}
@@ -53,12 +59,12 @@ export function MapNavView() {
 
         {serviceProvidersCategories.map((category) => (
           <MapNavCategorySection
-            key={category}
-            category={category}
+            key={category.key}
+            category={category.value}
             items={serviceProviders.filter(
-              (microgridServiceProvider) => microgridServiceProvider.category === category,
+              (microgridServiceProvider) => microgridServiceProvider.category === category.value,
             )}
-            isExpanded={expandedCategories[category]}
+            isExpanded={expandedCategories[category.value]}
             onToggle={toggleCategory}
           />
         ))}

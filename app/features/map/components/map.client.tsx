@@ -52,7 +52,6 @@ export function Map() {
           url="https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png"
         />
         {mapData.map((data) => {
-          console.log(data.category)
           const name = 'microgridName' in data ? data.microgridName : data.companyName
           const description = data.description
 

@@ -1,17 +1,22 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Button } from '~/components/button'
 import { Container } from '~/components/container'
 import { Heading } from '~/components/heading'
 import { Map } from '~/features/map/components/map.client'
 import { Text } from '~/components/text'
 import { Outlet } from 'react-router'
-import { MapNavControl } from '../../features/map/components/map-nav-control'
-import { MapDrawer } from '../../features/map/components/map-drawer'
+import { MapNavControl } from '~/features/map/components/map-nav-control'
+import { MapDrawer } from '~/features/map/components/map-drawer'
 
 // ----------------------------------------------------------------------
 
 export function MapExplorerView() {
   const [isSidebarVisible, setIsSidebarVisible] = useState(false)
+  const [isClient, setIsClient] = useState(false)
+
+  useEffect(() => {
+    setIsClient(true)
+  }, [isClient])
 
   return (
     <Container id="map" className="mt-16">
@@ -38,7 +43,7 @@ export function MapExplorerView() {
         <MapDrawer open={isSidebarVisible}>
           <Outlet />
         </MapDrawer>
-        {typeof window !== 'undefined' && <Map />}
+        {isClient && <Map />}
       </div>
     </Container>
   )
